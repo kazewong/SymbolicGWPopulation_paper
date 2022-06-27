@@ -1,6 +1,5 @@
-%%%%%%%% ICML 2022 EXAMPLE LATEX SUBMISSION FILE %%%%%%%%%%%%%%%%%
-
 \documentclass[nohyperref]{article}
+\usepackage{aas_macros}
 \usepackage{showyourwork}
 
 % Recommended, but optional, packages for figures and better typesetting:
@@ -61,25 +60,22 @@
 
 % The \icmltitle you define below is probably too long as a header.
 % Therefore, a short form for the running title is supplied here:
-%\icmltitlerunning{Automated discovery of interpretable gravitational-wave population models}
 
+\icmltitlerunning{Short}
 
 \begin{document}
 
 \twocolumn[
-%\icmltitle{Automatic, Flexible and Interpretable:\\gravitational-wave population analysis with symbolic regression}
-%\icmltitle{Automated discovery of symbolic gravitational-wave population models}
 \icmltitle{Automated discovery of interpretable gravitational-wave population models}
 
 
-\icmlsetsymbol{equal}{*}
-
 \begin{icmlauthorlist}
-\icmlauthor{Kaze W.K Wong}{equal,yyy}
-\icmlauthor{Miles Cranmer}{equal,yyy,comp}
+\icmlauthor{Kaze W.K Wong}{flatiron}
+\icmlauthor{Miles Cranmer}{princeton}
 \end{icmlauthorlist}
 
 \icmlaffiliation{flatiron}{Center for Computational Astrophysics, Flatiron Institute, New York, NY 10010, USA}
+\icmlaffiliation{princeton}{Department of Astrophysical Sciences, Princeton University, Princeton, New Jersey 08544, USA}
 
 
 \icmlcorrespondingauthor{Kaze Wong}{kwong@flatironinstitute.org}
@@ -103,7 +99,6 @@
 %\printAffiliationsAndNotice{}  % leave blank if no need to mention equal contribution
 \printAffiliationsAndNotice{\icmlEqualContribution} % otherwise use the standard text.
 
-
 \begin{abstract}
 We present an approach to automatically discover analytic population models for gravitational-wave (GW) events from data.
 As more gravitational-wave (GW) events are detected, flexible models such as Gaussian Mixture Models have become more important in fitting the distribution of GW properties due to their expressivity.
@@ -114,27 +109,27 @@ This demonstrates a promising pathway to automatically discover interpretable de
 \end{abstract}
 
 \section{Introduction}
-% \begin{figure*}[hbt!]
-% % \includegraphics[width=\textwidth]{figures/GWTC3_m1_combined.pdf}
+\begin{figure*}[hbt!]
+% \includegraphics[width=\textwidth]{figures/GWTC3_m1_combined.pdf}
 % \includegraphics[width=\textwidth]{figures/Page2.pdf}
-% \caption{An illustration of our proposed pipeline, which first
-% (\textit{far left})
-% requires observations of individual source properties (here, events shown from GWTC3);
-% then
-% (\textit{middle left}) 
-% infers the deconvolved population posterior density;
-% followed by (\textit{middle right})
-% using symbolic regression to search for an
-% an analytic model which approximates the density, using
-% operators common to existing population models; and finally
-% (\textit{far right}) distilling physical insights
-% from the recovered population model.
-% }
-% %\caption{\textit{left}: posterior density of the primary mass from all events reported in GWTC3. Each line is the normalized posterior density for one event.
-% %\textit{middle}: posterior predictive distribution of the Gaussian mixture model reported in \cite{LIGOScientific:2021psn}.
-% %\textit{right}: equations tabulated in table \ref{tab:equations}}
-% \label{fig:Gaussian_m1_fit}
-% \end{figure*}
+\caption{An illustration of our proposed pipeline, which first
+(\textit{far left})
+requires observations of individual source properties (here, events shown from GWTC3);
+then
+(\textit{middle left}) 
+infers the deconvolved population posterior density;
+followed by (\textit{middle right})
+using symbolic regression to search for an
+an analytic model which approximates the density, using
+operators common to existing population models; and finally
+(\textit{far right}) distilling physical insights
+from the recovered population model.
+}
+%\caption{\textit{left}: posterior density of the primary mass from all events reported in GWTC3. Each line is the normalized posterior density for one event.
+%\textit{middle}: posterior predictive distribution of the Gaussian mixture model reported in \cite{LIGOScientific:2021psn}.
+%\textit{right}: equations tabulated in table \ref{tab:equations}}
+\label{fig:Gaussian_m1_fit}
+\end{figure*}
 The rate of gravitational wave (GW) detections increases exponentially as the sensitivity of GW detectors improves \cite{LIGOScientific:2021djp} since the discovery in 2015 \cite{Abbott:2016blz}.
 To date, there are 79 officially announced events, the majority of them being binary black holes (BBH).
 With the increasing number of observed GW events, more and more features in the distribution of GW events await to be discovered.
@@ -342,8 +337,7 @@ mainly due to the difficulty of writing down a reasonable model to account for t
 At the same time, the most advanced flexible model in the literature is an n-dimensional histogram, which is hard to interpret.
 Our method can be a natural way to explore and to explain these correlations.
 
-% \bibliographystyle{icml2022}
-\bibliography{bib.bib}
+\bibliographystyle{icml2022}
+\bibliography{bib}
 
 \end{document}
-

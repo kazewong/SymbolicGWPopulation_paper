@@ -1,0 +1,233 @@
+\begin{thebibliography}{30}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abbott et~al.(2016)]{Abbott:2016blz}
+Abbott, B.~P. et~al.
+\newblock {Observation of Gravitational Waves from a Binary Black Hole Merger}.
+\newblock \emph{Phys. Rev. Lett.}, 116\penalty0 (6):\penalty0 061102, 2016.
+\newblock \doi{10.1103/PhysRevLett.116.061102}.
+
+\bibitem[Abbott et~al.(2019)]{LIGOScientific:2018mvr}
+Abbott, B.~P. et~al.
+\newblock {GWTC-1: A Gravitational-Wave Transient Catalog of Compact Binary
+  Mergers Observed by LIGO and Virgo during the First and Second Observing
+  Runs}.
+\newblock \emph{Phys. Rev. X}, 9\penalty0 (3):\penalty0 031040, 2019.
+\newblock \doi{10.1103/PhysRevX.9.031040}.
+
+\bibitem[Abbott et~al.(2021{\natexlab{a}})]{LIGOScientific:2020kqk}
+Abbott, R. et~al.
+\newblock {Population Properties of Compact Objects from the Second LIGO-Virgo
+  Gravitational-Wave Transient Catalog}.
+\newblock \emph{Astrophys. J. Lett.}, 913\penalty0 (1):\penalty0 L7,
+  2021{\natexlab{a}}.
+\newblock \doi{10.3847/2041-8213/abe949}.
+
+\bibitem[Abbott et~al.(2021{\natexlab{b}})]{LIGOScientific:2021djp}
+Abbott, R. et~al.
+\newblock {GWTC-3: Compact Binary Coalescences Observed by LIGO and Virgo
+  During the Second Part of the Third Observing Run}.
+\newblock 11 2021{\natexlab{b}}.
+
+\bibitem[Abbott et~al.(2021{\natexlab{c}})]{LIGOScientific:2021psn}
+Abbott, R. et~al.
+\newblock {The population of merging compact binaries inferred using
+  gravitational waves through GWTC-3}.
+\newblock 11 2021{\natexlab{c}}.
+
+\bibitem[Bovy et~al.(2011)Bovy, Hogg, and Roweis]{10.1214/10-AOAS439}
+Bovy, J., Hogg, D.~W., and Roweis, S.~T.
+\newblock {Extreme deconvolution: Inferring complete distribution functions
+  from noisy, heterogeneous and incomplete observations}.
+\newblock \emph{The Annals of Applied Statistics}, 5\penalty0 (2B):\penalty0
+  1657 -- 1677, 2011.
+\newblock \doi{10.1214/10-AOAS439}.
+\newblock URL \url{https://doi.org/10.1214/10-AOAS439}.
+
+\bibitem[Brindle(1980)]{brindleGeneticAlgorithmsFunction1980}
+Brindle, A.
+\newblock \emph{Genetic Algorithms for Function Optimization}.
+\newblock PhD thesis, 1980.
+
+\bibitem[Brunton et~al.(2016)Brunton, Proctor, and
+  Kutz]{bruntonDiscoveringGoverningEquations2016}
+Brunton, S.~L., Proctor, J.~L., and Kutz, J.~N.
+\newblock Discovering governing equations from data by sparse identification of
+  nonlinear dynamical systems.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 113\penalty0
+  (15):\penalty0 3932--3937, 2016.
+\newblock ISSN 0027-8424.
+\newblock \doi{10.1073/pnas.1517384113}.
+
+\bibitem[Cranmer(2020)]{cranmerPySRFastParallelized2020}
+Cranmer, M.
+\newblock {{PySR}}: {{Fast}} \& {{Parallelized Symbolic Regression}} in
+  {{Python}}/{{Julia}}.
+\newblock Zenodo, September 2020.
+
+\bibitem[Cranmer et~al.(2020)Cranmer, {Sanchez-Gonzalez}, Battaglia, Xu,
+  Cranmer, Spergel, and Ho]{cranmerDiscoveringSymbolicModels2020}
+Cranmer, M., {Sanchez-Gonzalez}, A., Battaglia, P., Xu, R., Cranmer, K.,
+  Spergel, D., and Ho, S.
+\newblock Discovering {{Symbolic Models}} from {{Deep Learning}} with
+  {{Inductive Biases}}.
+\newblock \emph{NeurIPS}, June 2020.
+
+\bibitem[Cranmer et~al.(2021)Cranmer, Kreisch, Pisani, {Villaescusa-Navarro},
+  Spergel, and Ho]{cranmerHistogramPoolingOperators2021}
+Cranmer, M., Kreisch, C., Pisani, A., {Villaescusa-Navarro}, F., Spergel,
+  D.~N., and Ho, S.
+\newblock Histogram {{Pooling Operators}}: {{An Interpretable Alternative}} for
+  {{Deep Sets}}.
+\newblock \emph{ICLR 2021 SimDL Workshop}, pp.\ ~10, June 2021.
+
+\bibitem[Delgado et~al.(2021)Delgado, Wadekar, Hadzhiyska, Bose, Hernquist, and
+  Ho]{delgadoModelingGalaxyhaloConnection2021}
+Delgado, A.~M., Wadekar, D., Hadzhiyska, B., Bose, S., Hernquist, L., and Ho,
+  S.
+\newblock Modeling the galaxy-halo connection with machine learning.
+\newblock November 2021.
+
+\bibitem[Edelman et~al.(2022)Edelman, Doctor, Godfrey, and
+  Farr]{Edelman:2021zkw}
+Edelman, B., Doctor, Z., Godfrey, J., and Farr, B.
+\newblock {Ain\textquoteright{}t No Mountain High Enough: Semiparametric
+  Modeling of LIGO\textendash{}Virgo\textquoteright{}s Binary Black Hole Mass
+  Distribution}.
+\newblock \emph{Astrophys. J.}, 924\penalty0 (2):\penalty0 101, 2022.
+\newblock \doi{10.3847/1538-4357/ac3667}.
+
+\bibitem[Fletcher(1988)]{fletcherPracticalMethodsOptimization1988}
+Fletcher, R.
+\newblock Practical {{Methods}} of {{Optimization}}.
+\newblock 1988.
+\newblock \doi{10.2307/2008742}.
+
+\bibitem[{Gaebel} et~al.(2019){Gaebel}, {Veitch}, {Dent}, and
+  {Farr}]{2019MNRAS.484.4008G}
+{Gaebel}, S.~M., {Veitch}, J., {Dent}, T., and {Farr}, W.~M.
+\newblock {Digging the population of compact binary mergers out of the noise}.
+\newblock \emph{\mnras}, 484\penalty0 (3):\penalty0 4008--4023, April 2019.
+\newblock \doi{10.1093/mnras/stz225}.
+
+\bibitem[Goldberg \& Deb(1991)Goldberg and
+  Deb]{goldbergComparativeAnalysisSelection1991}
+Goldberg, D.~E. and Deb, K.
+\newblock A {{Comparative Analysis}} of {{Selection Schemes Used}} in {{Genetic
+  Algorithms}}.
+\newblock In Rawlins, G. J.~E. (ed.), \emph{Foundations of {{Genetic
+  Algorithms}}}, volume~1, pp.\  69--93. {Elsevier}, January 1991.
+\newblock \doi{10.1016/B978-0-08-050684-5.50008-2}.
+
+\bibitem[Graham et~al.(2013)Graham, Djorgovski, Mahabal, Donalek, and
+  Drake]{grahamMachineassistedDiscoveryRelationships2013}
+Graham, M.~J., Djorgovski, S.~G., Mahabal, A.~A., Donalek, C., and Drake, A.~J.
+\newblock Machine-assisted discovery of relationships in astronomy.
+\newblock 431\penalty0 (3):\penalty0 2371--2384, May 2013.
+\newblock \doi{10.1093/mnras/stt329}.
+
+\bibitem[Hawking(2004)]{hawkingShouldersGiantsGreat2004}
+Hawking, S.
+\newblock \emph{On the Shoulders of Giants: The Great Works of Physics and
+  Astronomy}.
+\newblock {Running}, {Philadelphia, Pa.; London}, 2004.
+\newblock ISBN 978-0-7624-1898-5.
+
+\bibitem[Koza(1994)]{kozaGeneticProgrammingMeans1994}
+Koza, J.~R.
+\newblock Genetic programming as a means for programming computers by natural
+  selection.
+\newblock \emph{Statistics and Computing}, 4\penalty0 (2):\penalty0 87--112,
+  June 1994.
+\newblock ISSN 1573-1375.
+\newblock \doi{10.1007/BF00175355}.
+
+\bibitem[Mandel et~al.(2019)Mandel, Farr, and Gair]{Mandel:2018mve}
+Mandel, I., Farr, W.~M., and Gair, J.~R.
+\newblock {Extracting distribution parameters from multiple uncertain
+  observations with selection biases}.
+\newblock \emph{Mon. Not. Roy. Astron. Soc.}, 486\penalty0 (1):\penalty0
+  1086--1093, 2019.
+\newblock \doi{10.1093/mnras/stz896}.
+
+\bibitem[Real et~al.(2019)Real, Aggarwal, Huang, and
+  Le]{realRegularizedEvolutionImage2019}
+Real, E., Aggarwal, A., Huang, Y., and Le, Q.~V.
+\newblock Regularized {{Evolution}} for {{Image Classifier Architecture
+  Search}}.
+\newblock \emph{Proceedings of the AAAI Conference on Artificial Intelligence},
+  33\penalty0 (01):\penalty0 4780--4789, July 2019.
+\newblock ISSN 2374-3468.
+\newblock \doi{10.1609/aaai.v33i01.33014780}.
+
+\bibitem[Real et~al.(2020)Real, Liang, So, and
+  Le]{realAutoMLZeroEvolvingMachine2020}
+Real, E., Liang, C., So, D., and Le, Q.
+\newblock {{AutoML-Zero}}: {{Evolving Machine Learning Algorithms From
+  Scratch}}.
+\newblock In \emph{International {{Conference}} on {{Machine Learning}}}, pp.\
+  8007--8019. {PMLR}, November 2020.
+
+\bibitem[Schmidt \& Lipson(2009)Schmidt and
+  Lipson]{schmidtDistillingFreeFormNatural2009}
+Schmidt, M. and Lipson, H.
+\newblock Distilling {{Free-Form Natural Laws}} from {{Experimental Data}}.
+\newblock \emph{Science}, 324\penalty0 (5923):\penalty0 81--85, April 2009.
+\newblock ISSN 0036-8075, 1095-9203.
+\newblock \doi{10.1126/science.1165893}.
+
+\bibitem[Shao et~al.(2021)Shao, {Villaescusa-Navarro}, Genel, Spergel,
+  {Angles-Alcazar}, Hernquist, Dave, Narayanan, Contardo, and
+  Vogelsberger]{shaoFindingUniversalRelations2021}
+Shao, H., {Villaescusa-Navarro}, F., Genel, S., Spergel, D.~N.,
+  {Angles-Alcazar}, D., Hernquist, L., Dave, R., Narayanan, D., Contardo, G.,
+  and Vogelsberger, M.
+\newblock Finding universal relations in subhalo properties with artificial
+  intelligence.
+\newblock September 2021.
+
+\bibitem[{Thrane} \& {Talbot}(2019){Thrane} and {Talbot}]{2019PASA...36...10T}
+{Thrane}, E. and {Talbot}, C.
+\newblock {An introduction to Bayesian inference in gravitational-wave
+  astronomy: Parameter estimation, model selection, and hierarchical models}.
+\newblock \emph{\pasa}, 36:\penalty0 e010, March 2019.
+\newblock \doi{10.1017/pasa.2019.2}.
+
+\bibitem[Tiwari(2021)]{Tiwari:2020vym}
+Tiwari, V.
+\newblock {VAMANA: modeling binary black hole population with minimal
+  assumptions}.
+\newblock \emph{Class. Quant. Grav.}, 38\penalty0 (15):\penalty0 155007, 2021.
+\newblock \doi{10.1088/1361-6382/ac0b54}.
+
+\bibitem[Tiwari(2022)]{Tiwari:2021yvr}
+Tiwari, V.
+\newblock {Exploring Features in the Binary Black Hole Population}.
+\newblock \emph{Astrophys. J.}, 928\penalty0 (2):\penalty0 155, 2022.
+\newblock \doi{10.3847/1538-4357/ac589a}.
+
+\bibitem[Veitch et~al.(2015)]{Veitch:2014wba}
+Veitch, J. et~al.
+\newblock {Parameter estimation for compact binaries with ground-based
+  gravitational-wave observations using the LALInference software library}.
+\newblock \emph{Phys. Rev. D}, 91\penalty0 (4):\penalty0 042003, 2015.
+\newblock \doi{10.1103/PhysRevD.91.042003}.
+
+\bibitem[Vitale et~al.(2020)Vitale, Gerosa, Farr, and Taylor]{Vitale:2020aaz}
+Vitale, S., Gerosa, D., Farr, W.~M., and Taylor, S.~R.
+\newblock {Inferring the properties of a population of compact binaries in
+  presence of selection effects}.
+\newblock 7 2020.
+\newblock \doi{10.1007/978-981-15-4702-7_45-1}.
+
+\bibitem[Wadekar et~al.(2020)Wadekar, {Villaescusa-Navarro}, Ho, and
+  {Perreault-Levasseur}]{wadekarModelingAssemblyBias2020}
+Wadekar, D., {Villaescusa-Navarro}, F., Ho, S., and {Perreault-Levasseur}, L.
+\newblock Modeling assembly bias with machine learning and symbolic regression.
+\newblock \emph{arXiv e-prints}, art. arXiv:2012.00111, November 2020.
+
+\end{thebibliography}

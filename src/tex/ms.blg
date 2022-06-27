@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2021 - Spack)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: ms.aux
+The style file: icml2022.bst
+Database file #1: bib.bib
+Warning--empty journal in LIGOScientific:2021djp
+Warning--empty journal in LIGOScientific:2021psn
+Warning--empty school in brindleGeneticAlgorithmsFunction1980
+Warning--empty journal in delgadoModelingGalaxyhaloConnection2021
+Warning--empty booktitle in fletcherPracticalMethodsOptimization1988
+Warning--empty journal in grahamMachineassistedDiscoveryRelationships2013
+Warning--empty journal in shaoFindingUniversalRelations2021
+Warning--empty journal in Vitale:2020aaz
+You've used 30 entries,
+            2773 wiz_defined-function locations,
+            819 strings with 11982 characters,
+and the built_in function-call counts, 14532 in all, are:
+= -- 1291
+> -- 902
+< -- 21
++ -- 309
+- -- 277
+* -- 1249
+:= -- 2291
+add.period$ -- 117
+call.type$ -- 30
+change.case$ -- 174
+chr.to.int$ -- 28
+cite$ -- 68
+duplicate$ -- 632
+empty$ -- 1118
+format.name$ -- 319
+if$ -- 3006
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 29
+newline$ -- 183
+num.names$ -- 122
+pop$ -- 330
+preamble$ -- 1
+purify$ -- 146
+quote$ -- 0
+skip$ -- 470
+stack$ -- 0
+substring$ -- 453
+swap$ -- 70
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 325
+warning$ -- 8
+while$ -- 120
+width$ -- 0
+write$ -- 434
+(There were 8 warnings)
