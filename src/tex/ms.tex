@@ -196,7 +196,7 @@ Therefore, symbolic regression can produce insights for science in a way that tr
     \begin{tabular}{ l l l l }
     \hline
     \hline
-    Complexity &  Score & Loss & Equation\\
+    Complexity &  Score & Loss & Expression\\
     \hline
     \hline
     16 & 0.126   & 0.212  & $3.72 \rm{Cond}{\left(M - 9.27,0.9^{M} \right)} + 3.72 \rm{Gauss}{\left(0.52 M - 4.85 \right)}$\\
@@ -207,7 +207,7 @@ Therefore, symbolic regression can produce insights for science in a way that tr
     \hline
     \hline
     \end{tabular}
-    \caption{Equations return obtained through symbolic regression with \pysr.
+    \caption{Expressions obtained through symbolic regression with \pysr.
     In the search we perform, there are 30 equations with different complexities.
     We select three most representative equations using a combination of score and loss threshold.}
     \label{tab:equations}
@@ -234,6 +234,40 @@ This algorithm simulates natural selection: each expression is represented by a 
 Expressions are subsampled, and the fittest expression in each group (using a metric which combines accuracy and simplicity) is used to breed new mutated expressions, as well as cross-bred with other top expressions.
 \pysr adds several additional techniques onto these classic algorithms, such as explicit constant optimization using BFGS \cite{fletcherPracticalMethodsOptimization1988}, and an adaptive complexity penalty, while allowing the use of custom operators and losses which is important for this work.
 
+Internal to \pysr, a multi-objective optimization problem is solved: the evolution seeks to find expressions which are as accurate as possible, while being as simple as possible.
+Formally, for our setting, \pysr solves the following optimization problem:
+\begin{align}
+    s_c &= 
+        \mathop{\arg\min}_{
+            \tiny
+            \begin{array}{c}s\in\mathcal{S}\\ \abs{s} = c \end{array}
+        }
+        \mathcal{L}(s),
+        \\
+    &\text{for each } c \in \{1, \ldots, 80\},\nonumber\\
+    \text{where }\mathcal{L}(s) &= \sum_i \ell(s(\mathbf{x}_i), y_i)
+\end{align}
+where $s$ is an expression, 
+$\mathcal{S}$ is a space of possible expressions considered,
+$\abs{s}$ is the complexity of an expression $s$,
+$\ell$ is the loss function, and $\{(\mathbf x_i, y_i)\}$ is the dataset
+for $\mathbf x_i$ each input and $y_i$ the label.
+The most accurate expression at each $c$, denoted as $s_c$, is computed for a given set range of $c$, which we choose as $c\in\{1, \ldots, 80\}$.
+Complexity is defined here
+as a sum of the complexity of each symbol in the expression,
+and $\ell(\hat{y}_i, y_i) = \qty(\hat{y}_i - y_i)^2$.
+
+Next, given the set of the best expressions at each complexity $\mathcal{S}^\ast = \{s_c\}_{c\in\{1,\ldots,80\}}$,
+we can define the \textit{score} of an expression as the slope of the accuracy-complexity curve, equal to:
+\begin{equation}
+    \text{score} = -\frac{\Delta (\log \mathcal{L}(s))}{\Delta(\abs{s})},
+\end{equation}
+which is a heuristic for the quality of a particular equation, used in the symbolic regression literature \cite{eureqa,cranmerDiscoveringSymbolicModels2020}.
+Finally, we can construct the \textit{Pareto curve}, defined as:
+\begin{equation}
+    \hat{\mathcal{S}}^\ast = \{s_c \ |\ \mathcal{L}(s_c) < \mathcal{L}(s_q) \forall c > q \},
+\end{equation}
+such that each remaining expression is more accurate than all simpler expressions.
 
 \paragraph{Implementation for GWs}
 % Describe reanalysizing the real data using the extracted expression
