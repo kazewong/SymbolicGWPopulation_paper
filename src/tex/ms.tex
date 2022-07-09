@@ -103,7 +103,7 @@
 We present an approach to automatically discover analytic population models for gravitational-wave (GW) events from data.
 As more gravitational-wave (GW) events are detected, flexible models such as Gaussian Mixture Models have become more important in fitting the distribution of GW properties due to their expressivity.
 However, flexible models come with a cost: a large number of parameters that lack physical motivation, making interpreting the implication of these models very difficult.
-In this work, we demonstrate the use of symbolic regression to distill such flexible models into interpretable analytic expressions.
+In this work, we demonstrate symbolic regression can complement flexible models by distilling the posterior predictive distribution of such flexible models into interpretable analytic expressions.
 We recover common GW population models such as a power-law-plus-Gaussian, and find a new empirical population model which combines accuracy and simplicity.
 This demonstrates a promising pathway to automatically discover interpretable descriptions of features in the ever-growing GW catalog. 
 \end{abstract}
@@ -111,7 +111,7 @@ This demonstrates a promising pathway to automatically discover interpretable de
 \section{Introduction}
 \begin{figure*}[hbt!]
 % \includegraphics[width=\textwidth]{figures/GWTC3_m1_combined.pdf}
-\includegraphics[width=\textwidth]{figures/Page2.pdf}
+\includegraphics[width=\textwidth]{static/Gaussian_m1_fit.pdf}
 \caption{An illustration of our proposed pipeline, which first
 (\textit{far left})
 requires observations of individual source properties (here, events shown from GWTC3);
@@ -329,6 +329,9 @@ Compared to traditional methods such as phenomenological modeling, which relies 
 our pipeline is fully automatic.
 This allows the community to discover interpretable patterns in the GW catalog in a data-driven instead of model-driven manner.
 Hence, our method is more scalable to more complex and higher-dimensional datasets.
+
+Note that the result from symbolic regression does not completely replace the flexible model for a few reasons.
+First, symbolic regression does not 
 
 In this work, we focus on analyzing only the primary mass distribution.
 Our method is trivially generalizable to higher-dimensional data, such as the joint space of both the primary mass and the secondary mass.
