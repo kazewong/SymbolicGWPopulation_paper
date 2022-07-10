@@ -111,7 +111,7 @@ This demonstrates a promising pathway to automatically discover interpretable de
 \section{Introduction}
 \begin{figure*}[hbt!]
 % \includegraphics[width=\textwidth]{figures/GWTC3_m1_combined.pdf}
-\includegraphics[width=\textwidth]{static/Gaussian_m1_fit.pdf}
+\includegraphics[width=\textwidth]{../static/Gaussian_m1_fit.pdf}
 \caption{An illustration of our proposed pipeline, which first
 (\textit{far left})
 requires observations of individual source properties (here, events shown from GWTC3);
@@ -323,15 +323,16 @@ In this paper, we use symbolic regression to extract interpretable equations fro
 We show SR is able to discover equations that are similar to state-of-the-art phenomenological models.
 On top of finding forms that have already been discovered,
 our result also shed insights on an open question---whether there are additional features other than the two prominent peaks in the primary mass distribution \cite{Tiwari:2021yvr}.
-Our results suggest any additional features such as tapering of the continuum or wiggles between the two peaks are not statistically significant.
+Our results suggest interpreting any additional features such as tapering of the continuum or wiggles between the two peaks can be tricky as their significance are unclear.
 
+The main message of this work is that by combining flexible models with symbolic regression, we can discover interpretable equations that can describe the increasingly complex GW catalog.
 Compared to traditional methods such as phenomenological modeling, which relies on an individual's insight,
-our pipeline is fully automatic.
+our pipeline requires minimal human intervene.
+Our method is not a model selection method by itself, but a pipeline to discover models for downstream tasks such as model selection and parameter estimation.
+Once we obtain a set of equations, we can plug the expressions in a standard HBA pipeline to estimate the parameters of the model and select between models.
 This allows the community to discover interpretable patterns in the GW catalog in a data-driven instead of model-driven manner.
-Hence, our method is more scalable to more complex and higher-dimensional datasets.
+In this sense, our method is more scalable to more complex and higher-dimensional datasets.
 
-Note that the result from symbolic regression does not completely replace the flexible model for a few reasons.
-First, symbolic regression does not 
 
 In this work, we focus on analyzing only the primary mass distribution.
 Our method is trivially generalizable to higher-dimensional data, such as the joint space of both the primary mass and the secondary mass.
@@ -339,6 +340,7 @@ So far there are relatively few phenomenological models which can capture correl
 mainly due to the difficulty of writing down a reasonable model to account for these correlations.
 At the same time, the most advanced flexible model in the literature is an n-dimensional histogram, which is hard to interpret.
 Our method can be a natural way to explore and to explain these correlations.
+
 
 \bibliographystyle{icml2022}
 \bibliography{bib}
