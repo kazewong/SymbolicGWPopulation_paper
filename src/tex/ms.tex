@@ -1,4 +1,7 @@
 \documentclass[nohyperref]{article}
+% If accepted, instead use the following line for the camera-ready submission:
+\usepackage[accepted]{icml2022}
+
 \usepackage{aas_macros}
 \usepackage{showyourwork}
 
@@ -27,14 +30,13 @@
 % Use the following line for the initial blind version submitted for review:
 % \usepackage{icml2022}
 
-% If accepted, instead use the following line for the camera-ready submission:
-\usepackage[accepted]{icml2022}
 
 % For theorems and such
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{amsthm}
+\usepackage{physics}
 
 % if you use cleveref..
 \usepackage[capitalize,noabbrev]{cleveref}
@@ -195,7 +197,7 @@ Therefore, symbolic regression can produce insights for science in a way that tr
     \begin{tabular}{ l l l l }
     \hline
     \hline
-    Complexity &  Score & Loss & Equation\\
+    Complexity &  Score & Loss & Expression\\
     \hline
     \hline
     16 & 0.126   & 0.212  & $3.72 \rm{Cond}{\left(M - 9.27,0.9^{M} \right)} + 3.72 \rm{Gauss}{\left(0.52 M - 4.85 \right)}$\\
@@ -206,7 +208,7 @@ Therefore, symbolic regression can produce insights for science in a way that tr
     \hline
     \hline
     \end{tabular}
-    \caption{Equations return obtained through symbolic regression with \pysr.
+    \caption{Expressions obtained through symbolic regression with \pysr.
     In the search we perform, there are 30 equations with different complexities.
     We select three most representative equations using a combination of score and loss threshold.}
     \label{tab:equations}
