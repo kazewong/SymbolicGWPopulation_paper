@@ -105,7 +105,7 @@
 We present an approach to automatically discover analytic population models for gravitational-wave (GW) events from data.
 As more gravitational-wave (GW) events are detected, flexible models such as Gaussian Mixture Models have become more important in fitting the distribution of GW properties due to their expressivity.
 However, flexible models come with a cost: a large number of parameters that lack physical motivation, making interpreting the implication of these models very difficult.
-In this work, we demonstrate the use of symbolic regression to distill such flexible models into interpretable analytic expressions.
+In this work, we demonstrate symbolic regression can complement flexible models by distilling the posterior predictive distribution of such flexible models into interpretable analytic expressions.
 We recover common GW population models such as a power-law-plus-Gaussian, and find a new empirical population model which combines accuracy and simplicity.
 This demonstrates a promising pathway to automatically discover interpretable descriptions of features in the ever-growing GW catalog. 
 \end{abstract}
@@ -113,7 +113,7 @@ This demonstrates a promising pathway to automatically discover interpretable de
 \section{Introduction}
 \begin{figure*}[hbt!]
 % \includegraphics[width=\textwidth]{figures/GWTC3_m1_combined.pdf}
-\includegraphics[width=\textwidth]{figures/Page2.pdf}
+\includegraphics[width=\textwidth]{../static/Gaussian_m1_fit.pdf}
 \caption{An illustration of our proposed pipeline, which first
 (\textit{far left})
 requires observations of individual source properties (here, events shown from GWTC3);
@@ -145,7 +145,6 @@ In GWTC2 (which is announced in 2020) \cite{LIGOScientific:2020kqk}, the communi
 Finally, the state-of-the-art model used in analyzing GWTC3 \cite{LIGOScientific:2021psn} further adds a spline on top of the power-law and Gaussian model to fit the residual \cite{Edelman:2021zkw}.
 Since the complexity of the catalog grows with the size of the catalog,
 the community is struggling to write down an interpretable model that is flexible enough to explain the increasing rich set of features in the catalog. 
-
 
 Alternatively, there have been studies using much more flexible models such as a Gaussian mixture model to analyze the catalog \cite{Tiwari:2020vym}.
 While such a flexible model is powerful in fitting complex datasets,
@@ -236,41 +235,6 @@ This algorithm simulates natural selection: each expression is represented by a 
 Expressions are subsampled, and the fittest expression in each group (using a metric which combines accuracy and simplicity) is used to breed new mutated expressions, as well as cross-bred with other top expressions.
 \pysr adds several additional techniques onto these classic algorithms, such as explicit constant optimization using BFGS \cite{fletcherPracticalMethodsOptimization1988}, and an adaptive complexity penalty, while allowing the use of custom operators and losses which is important for this work.
 
-Internal to \pysr, a multi-objective optimization problem is solved: the evolution seeks to find expressions which are as accurate as possible, while being as simple as possible.
-Formally, for our setting, \pysr solves the following optimization problem:
-\begin{align}
-    s_c &= 
-        \mathop{\arg\min}_{
-            \tiny
-            \begin{array}{c}s\in\mathcal{S}\\ \abs{s} = c \end{array}
-        }
-        \mathcal{L}(s),
-        \\
-    &\text{for each } c \in \{1, \ldots, 80\},\nonumber\\
-    \text{where }\mathcal{L}(s) &= \sum_i \ell(s(\mathbf{x}_i), y_i)
-\end{align}
-where $s$ is an expression, 
-$\mathcal{S}$ is a space of possible expressions considered,
-$\abs{s}$ is the complexity of an expression $s$,
-$\ell$ is the loss function, and $\{(\mathbf x_i, y_i)\}$ is the dataset
-for $\mathbf x_i$ each input and $y_i$ the label.
-The most accurate expression at each $c$, denoted as $s_c$, is computed for a given set range of $c$, which we choose as $c\in\{1, \ldots, 80\}$.
-Complexity is defined here
-as a sum of the complexity of each symbol in the expression,
-and $\ell(\hat{y}_i, y_i) = \qty(\hat{y}_i - y_i)^2$.
-
-Next, given the set of the best expressions at each complexity $\mathcal{S}^\ast = \{s_c\}_{c\in\{1,\ldots,80\}}$,
-Next, we can construct the \textit{Pareto curve}, defined as:
-\begin{equation}
-    \hat{\mathcal{S}}^\ast = \{s_c \ |\ \mathcal{L}(s_c) < \mathcal{L}(s_q) \forall c > q \},
-\end{equation}
-such that each remaining expression is more accurate than all simpler expressions.
-Using this, we can define the \textit{score} of an expression as the slope of the Pareto curve, equal to:
-\begin{equation}
-    \text{score} = \frac{\Delta (-\log \mathcal{L}(s))}{\Delta(\abs{s})},
-\end{equation}
-which is a heuristic for the quality of a particular equation, used in the symbolic regression literature \cite{eureqa,cranmerDiscoveringSymbolicModels2020}.
-
 \paragraph{Implementation for GWs}
 % Describe reanalysizing the real data using the extracted expression
 % After obtaining a number of 
@@ -280,7 +244,6 @@ Astronomy has seen increasing use of symbolic regression to find new empirical m
 
 Here, we use symbolic regression for the first time to learn population density models in astrophysics.
 One of the main advantages of symbolic regression is to learn a model into an interpretable language, and, therefore, we define a set of operators which frequently occur in GW population models: addition, subtraction, division, power laws, Gaussians (unary operator: $f(x)=\exp(-x^2)$), and conditional statements (binary operator: $g(x, y)=\operatorname{if}(x \geq 0, y, 0)$).
-
 
 \section{Gravitational-Wave Data}
 \label{sec:GWdata}
@@ -329,13 +292,15 @@ The equations selected under these criteria are tabulated in table \ref{tab:equa
 Note that we take the absolute value of the equations in order to make figure \ref{fig:Gaussian_m1_fit}.
 
 The lowest complexity (16) equation returned is a decaying exponential function with a Gaussian bump at the lower end of the mass distribution.
-This agrees with a recent study pointing out there is a very strong excess of events at $m_{1}\sim 10\ M_{\odot}$.
+This agrees with a recent study pointing out there is a very strong excess of events at $m_{1}\sim 10\ M_{\odot}$,
+which corresponds to a smooth turn-on of the black hole mass spectrum \cite{Talbot:2018cva}.
 In order to account for the bump around $30\ M_{\odot}$,
 the exponential part of this equation has a much higher normalization compared to the others.
 This agrees with the analysis done in GWTC3, where a single power-law seems to have trouble accounting for the excess of events around $m_{1}\sim 30\ M_{\odot}$\cite{LIGOScientific:2021psn}.
 
 Compared to the lowest complexity equation, the middle complexity (25) equation instead prefers a lower overall normalization of the exponential function,
-but account for the bump around $30\ M_{\odot}$ with a Gaussian component.
+but account for the bump around $30\ M_{\odot}$ with a Gaussian component,
+which is proposed to be driven by a pile-up from pulsational pair-instability supernovae \cite{Talbot:2018cva}.
 This equation is similar to one of the simplest phenomenological models fitted to GWTC3, which is a power-law mixed with a Gaussian bump.
 The difference between this equation and the one presented in GWTC3 is this equation has an additional bump at $m_{1}\sim 10\ M_{\odot}$,
 which is also present in the lower complexity equation.
@@ -359,12 +324,16 @@ In this paper, we use symbolic regression to extract interpretable equations fro
 We show SR is able to discover equations that are similar to state-of-the-art phenomenological models.
 On top of finding forms that have already been discovered,
 our result also shed insights on an open question---whether there are additional features other than the two prominent peaks in the primary mass distribution \cite{Tiwari:2021yvr}.
-Our results suggest any additional features such as tapering of the continuum or wiggles between the two peaks are not statistically significant.
+Our results suggest interpreting any additional features such as tapering of the continuum or wiggles between the two peaks can be tricky as their significance are unclear.
 
+The main message of this work is that by combining flexible models with symbolic regression, we can discover interpretable equations that can describe the increasingly complex GW catalog.
 Compared to traditional methods such as phenomenological modeling, which relies on an individual's insight,
-our pipeline is fully automatic.
+our pipeline requires minimal human intervene.
+Our method is not a model selection method by itself, but a pipeline to discover models for downstream tasks such as model selection and parameter estimation.
+Once we obtain a set of equations, we can plug the expressions in a standard HBA pipeline to estimate the parameters of the model and select between models.
 This allows the community to discover interpretable patterns in the GW catalog in a data-driven instead of model-driven manner.
-Hence, our method is more scalable to more complex and higher-dimensional datasets.
+In this sense, our method is more scalable to more complex and higher-dimensional datasets.
+
 
 In this work, we focus on analyzing only the primary mass distribution.
 Our method is trivially generalizable to higher-dimensional data, such as the joint space of both the primary mass and the secondary mass.
@@ -372,6 +341,7 @@ So far there are relatively few phenomenological models which can capture correl
 mainly due to the difficulty of writing down a reasonable model to account for these correlations.
 At the same time, the most advanced flexible model in the literature is an n-dimensional histogram, which is hard to interpret.
 Our method can be a natural way to explore and to explain these correlations.
+
 
 \bibliographystyle{icml2022}
 \bibliography{bib}
