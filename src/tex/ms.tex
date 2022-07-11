@@ -213,8 +213,8 @@ There are several different strategies for performing symbolic regression, all o
 Some methods, such as \textit{SINDy} \cite{bruntonDiscoveringGoverningEquations2016}, are dictionary-based, and search for a sparse linear combination of hand-crafted terms.
 Other methods, such as \textit{eureqa} \cite{schmidtDistillingFreeFormNatural2009}, are genetic algorithm-based, and, though slower, can find any expression that can be represented as a tree of predefined operators, variables, and constants.
 
-We use the algorithm \pysr\footnote{\url{https://github.com/MilesCranmer/PySR}} \cite{cranmerPySRFastParallelized2020} for performing symbolic regression.
-\pysr is a genetic algorithm-style symbolic regression algorithm
+We use the algorithm and software \pysr\footnote{\url{https://github.com/MilesCranmer/PySR}} \cite{cranmerPySRFastParallelized2020} for performing symbolic regression.
+\pysr uses a genetic algorithm-style symbolic regression algorithm
 \citep[see][for an early example]{kozaGeneticProgrammingMeans1994}.
 Loosely inspired by \textit{eureqa},
 \pysr searches the space of trees 
@@ -244,8 +244,8 @@ Formally, for our setting, \pysr solves the following optimization problem:
 where $s$ is an expression, 
 $\mathcal{S}$ is a space of possible expressions considered,
 $\abs{s}$ is the complexity of an expression $s$,
-$\ell$ is the loss function, and $\{(\mathbf x_i, y_i)\}$ is the dataset
-for $\mathbf x_i$ each input and $y_i$ the label.
+$\ell$ is the loss function, and $\{(x_i, y_i)\}$ is the dataset
+for $x_i$ each input and $y_i$ the label.
 The most accurate expression at each $c$, denoted as $s_c$, is computed for a given set range of $c$, which we choose as $c\in\{1, \ldots, 80\}$.
 Complexity is defined here
 as a sum of the complexity of each symbol in the expression,
