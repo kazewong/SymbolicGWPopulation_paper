@@ -131,43 +131,44 @@ from the recovered population model.
 %\textit{right}: equations tabulated in table \ref{tab:equations}}
 \label{fig:Gaussian_m1_fit}
 \end{figure*}
-The rate of gravitational wave (GW) detections increases exponentially as the sensitivity of GW detectors improves \cite{LIGOScientific:2021djp} since the discovery in 2015 \cite{Abbott:2016blz}.
-To date, there are 79 officially announced events, the majority of them being binary black holes (BBH).
-With the increasing number of observed GW events, more and more features in the distribution of GW events await to be discovered.
+The rate of gravitational wave (GW) detections is increasing exponentially as the sensitivity of GW detectors improves \cite{LIGOScientific:2021djp} since the discovery in 2015 \cite{Abbott:2016blz}.
+Today there exist 79 official events, the majority of them being Binary Black Holes (BBHs).
+As more GW events are observed, more features in the distribution of GW events become resolved and available for discovery.
 Currently, one of the most common ways to understand the observed GW population is through phenomenological modeling.
-For example, to understand the distribution of primary mass in observed BBHs, one would write down a hand-crafted model of the primary mass distribution, such as a power-law distribution \cite{LIGOScientific:2021psn}.
-By comparing the model to the data, one can measure the parameters which characterize the model, such as the spectral index of a power-law distribution.
+For example, to understand the distribution of primary mass in observed BBHs, one would hand-craft a model of the primary mass distribution, such as a power-law distribution \cite{LIGOScientific:2021psn}.
+By comparing the model to the data, one can measure the parameters which characterize the model, such as the spectral index. \todo{Could make a statement about how power laws typically have some astrophysical meaning - hence a good operator, and why they are used in population models.}
 
-The central issue with the use of this paradigm is the lack of scalability to a more complex dataset, since manual input is required to write down a sensible phenomenological model.
+The central issue with this paradigm is the lack of scalability to a more complex dataset, since construction of sensible phenomenological models requires manual intervention.
+\todo{Weird transition here.}
 After the announcement of 11 events in the first Gravitational-Wave Transient Catalog (GWTC1) in 2019 \cite{LIGOScientific:2018mvr}, a power law was sufficient to explain the primary mass distribution.
-In GWTC2 (which is announced in 2020) \cite{LIGOScientific:2020kqk}, the community modified the simple power-law to either a broken power law with two spectral indices or with the superimposing of a Gaussian distribution on top of the power-law.
+In GWTC2 (which is announced in 2020) \cite{LIGOScientific:2020kqk}, the community modified the simple power law to either a broken power law with two spectral indices, or with the addition of a Gaussian distribution.
 Finally, the state-of-the-art model used in analyzing GWTC3 \cite{LIGOScientific:2021psn} further adds a spline on top of the power-law and Gaussian model to fit the residual \cite{Edelman:2021zkw}.
 Since the complexity of the catalog grows with the size of the catalog,
-the community is struggling to write down an interpretable model that is flexible enough to explain the increasing rich set of features in the catalog. 
+the community is looking to develop an interpretable model that is flexible enough to explain the increasing rich set of features in the catalog. 
 
 
-Alternatively, there have been studies using much more flexible models such as a Gaussian mixture model to analyze the catalog \cite{Tiwari:2020vym}.
+Besides such physically motivated models, there have been studies using much more flexible models such as a Gaussian Mixture Model (GMM) to analyze the catalog \cite{Tiwari:2020vym}.
 While such a flexible model is powerful in fitting complex datasets,
 it is difficult to interpret the physical meaning of the fitted parameters.
-There are two reasons why flexible models are hard to interpret:
-first, flexible models often have many parameters.
-In GWTC3, the specific Gaussian mixture model has over 100 parameters.
-With that number of parameters, it is not trivial to assess the relative importance of the parameters.
-Second, flexible models often employ bases that are not physically meaningful.
-For example, consider that one wishes to assess which parameter in the fitted Gaussian mixture model is the most important, one may apply a principal component analysis (PCA) to the set of parameters and find the most important component.
+There are two reasons why such flexible models are hard to interpret:
+first, these models often have many parameters;
+in GWTC3, the GMM has over 100 parameters.
+With so many degrees of freedom, it is non-trivial to analyze contributions from each mode and attempt to disentangle meaningful patterns.
+Second, flexible models often employ bases that are not physically motivated.
+For example, consider if one wished to assess which parameter in a fitted GMM is the most important: one may apply a Principal Component Analysis (PCA) to the set of parameters and find the most important component.
 However, the PCA basis for this dataset is not a basis that is directly related to any astrophysical process,
-so having the relative importance in that form does not provide insight into astrophysics.
+so having the relative importance in that form does not provide insight into astrophysics. \todo{This makes no sense. Wouldn’t you look at the amplitude?}
 
-Symbolic regression (SR) is a machine learning technique which searches to space of analytic expressions to fit a dataset---this algorithm complements the weakness of a flexible model in understanding the distribution of GW.
-Since SR does not take advantage of using gradient information when searching for expressions,
-and the space of equation is a combinatorial space,
-SR is slow in comparison to traditional machine learning techniques such as Gaussian Mixture Models (GMMs).
-Therefore, rather than fitting SR directly to the complex and expensive likelihoods found in GW event analysis, we first fit the GMM as a sort of approximated likelihood.
-Then, we apply SR to the output of this GMM, as the loss function is then simply mean-squared error compared to the GMM, rather equal to an evaluation of the raw likelihood.
+Symbolic regression (SR) is a machine learning technique which searches to space of analytic expressions to fit a dataset---this algorithm is both flexible and interpretable. SR can fit  many different patterns, while at the same time presenting the pattern in a simple concise way in the language of existing models—i.e., analytic expressions. SR complements the weakness of a flexible model in understanding the distribution of GW.
+However, since SR does not take advantage of using gradient information when searching for expressions,
+and  SR searches a combinatorial space over expressions,
+it is slow in comparison to traditional machine learning techniques such as Gaussian Mixture Models (GMMs).
+Therefore, rather than fitting SR directly to the complex and expensive likelihoods found in GW event analysis, we first fit the GMM as a fast-to-evaluate approximation of the true posterior.
+Then, we run SR to approximate the output of this GMM, which is feasible only because the loss function is then simply mean-squared error against the GMM, rather equal to an evaluation of the raw  and expensive likelihood.
 %While SR itself is not efficient enough to be used to analyze the data directly, using SR to interpret a flexible model that has already been fitted to the data can be very effective.
 
 In this work, we apply SR to the mixture Gaussian model used to fit the primary mass distribution of GWTC3.
-In particular, we apply SR to fit the posterior predictive distribution given by the Gaussian mixture model.
+Specifically, we run SR to approximate the posterior predictive distribution produced by the Gaussian mixture model.
 This paper is structured as follows: we describe the GW data used in this work in \ref{sec:GWdata}.
 We briefly review SR in section \ref{sec:method}.
 We present our main result in section \ref{sec:result}.
