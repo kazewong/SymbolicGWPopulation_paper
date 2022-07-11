@@ -107,7 +107,7 @@ As more gravitational-wave (GW) events are detected, flexible models such as Gau
 However, flexible models come with many parameters that lack physical motivation, making interpreting the implication of these models challenging.
 In this work, we demonstrate symbolic regression can complement flexible models by distilling the posterior predictive distribution of such flexible models into interpretable analytic expressions.
 We recover common GW population models such as a power-law-plus-Gaussian, and find a new empirical population model which combines accuracy and simplicity.
-This demonstrates a promising pathway to discover interpretable population models, automatically, from the GW merger catalogs and other astrophysical phenomena.
+This demonstrates a promising pathway to automatically discover interpretable population models in the ever-growing GW catalog.
 \end{abstract}
 
 \section{Introduction}
@@ -132,21 +132,21 @@ from the recovered population model.
 \label{fig:Gaussian_m1_fit}
 \end{figure*}
 The rate of gravitational wave (GW) detections is increasing exponentially as the sensitivity of GW detectors improves \cite{LIGOScientific:2021djp} since the discovery in 2015 \cite{Abbott:2016blz}.
-Today there exist 79 official events, the majority of them being Binary Black Holes (BBHs).
-As more GW events are observed, more features in the distribution of GW events become resolved and available for discovery.
+The most update catalog of GW contains 79 events, the majority of them being Binary Black Holes (BBHs).
+As more GW events are observed, more features in the distribution of GW events await to be discovered.
 Currently, one of the most common ways to understand the observed GW population is through phenomenological modeling.
 For example, to understand the distribution of primary mass in observed BBHs, one would hand-craft a model of the primary mass distribution, such as a power-law distribution \cite{LIGOScientific:2021psn}.
-By comparing the model to the data, one can measure the parameters which characterize the model, such as the spectral index. \todo{Could make a statement about how power laws typically have some astrophysical meaning - hence a good operator, and why they are used in population models.}
+By comparing the model to the data, one can measure the parameters which characterize the model, such as the spectral index.
 
-The central issue with this paradigm is the lack of scalability to a more complex dataset, since construction of sensible phenomenological models requires manual intervention.
-\todo{Weird transition here.}
-After the announcement of 11 events in the first Gravitational-Wave Transient Catalog (GWTC1) in 2019 \cite{LIGOScientific:2018mvr}, a power law was sufficient to explain the primary mass distribution.
+The main issue with this paradigm is the lack of scalability to a more complex dataset, since construction of sensible phenomenological models requires manual intervention.
+To illustrate the shortcoming of this paradigm: 
+when 11 events were announced in the first Gravitational-Wave Transient Catalog (GWTC1) in 2019 \cite{LIGOScientific:2018mvr}, a power law was sufficient to explain the primary mass distribution.
 In GWTC2 (which is announced in 2020) \cite{LIGOScientific:2020kqk}, the community modified the simple power law to either a broken power law with two spectral indices, or with the addition of a Gaussian distribution.
 Finally, the state-of-the-art model used in analyzing GWTC3 \cite{LIGOScientific:2021psn} further adds a spline on top of the power-law and Gaussian model to fit the residual \cite{Edelman:2021zkw}.
 Since the complexity of the catalog grows with the size of the catalog,
-the community is looking to develop an interpretable model that is flexible enough to explain the increasing rich set of features in the catalog. 
+it becomes increasingly difficult to develop an interpretable model that is flexible enough to explain the increasing rich set of features in the catalog . 
 
-Besides such physically motivated models, there have been studies using much more flexible models such as a Gaussian Mixture Model (GMM) to analyze the catalog \cite{Tiwari:2020vym}.
+Alternatively, there have been studies using much more flexible models such as a Gaussian Mixture Model (GMM) to analyze the catalog \cite{Tiwari:2020vym}.
 While such a flexible model is powerful in fitting complex datasets,
 it is difficult to interpret the physical meaning of the fitted parameters.
 There are two reasons why such flexible models are hard to interpret:
@@ -156,18 +156,18 @@ With so many degrees of freedom, it is non-trivial to analyze contributions from
 Second, flexible models often employ bases that are not physically motivated.
 For example, consider if one wished to assess which parameter in a fitted GMM is the most important: one may apply a Principal Component Analysis (PCA) to the set of parameters and find the most important component.
 However, the PCA basis for this dataset is not a basis that is directly related to any astrophysical process,
-so having the relative importance in that form does not provide insight into astrophysics. \todo{This makes no sense. Wouldn’t you look at the amplitude?}
+so having the relative importance in that form does not provide insight into astrophysics directly. \todo{This makes no sense. Wouldn’t you look at the amplitude?} \kw{PCA is a transformed coordinate that describe the data, I can't look at the amplitude of a PCA component and know exactly what it means astrophysically. You won't report the PCA value in your abstract since it has no physical meaning.}
 
-Symbolic regression (SR) is a machine learning technique which searches to space of analytic expressions to fit a dataset---this algorithm is both flexible and interpretable. SR can fit  many different patterns, while at the same time presenting the pattern in a simple concise way in the language of existing models—i.e., analytic expressions. SR complements the weakness of a flexible model in understanding the distribution of GW.
+Symbolic regression (SR) is a machine learning technique which searches to space of analytic expressions to fit a dataset, which complements the weakness of a flexible model in understanding the distribution of GW.
 However, since SR does not take advantage of using gradient information when searching for expressions,
 and  SR searches a combinatorial space over expressions,
 it is slow in comparison to traditional machine learning techniques such as Gaussian Mixture Models (GMMs).
 Therefore, rather than fitting SR directly to the complex and expensive likelihoods found in GW event analysis, we first fit the GMM as a fast-to-evaluate approximation of the true posterior.
-Then, we run SR to approximate the output of this GMM, which is feasible only because the loss function is then simply mean-squared error against the GMM, rather equal to an evaluation of the raw  and expensive likelihood.
+Then, we run SR to approximate the output of this GMM, which is feasible only because the loss function is then simply mean-squared error against the GMM, rather equal to an evaluation of the raw and expensive likelihood.
 %While SR itself is not efficient enough to be used to analyze the data directly, using SR to interpret a flexible model that has already been fitted to the data can be very effective.
 
 In this work, we apply SR to the mixture Gaussian model used to fit the primary mass distribution of GWTC3.
-Specifically, we run SR to approximate the posterior predictive distribution produced by the Gaussian mixture model.
+Specifically, we approximate the posterior predictive distribution produced of the Gaussian mixture model with SR.
 This paper is structured as follows: we describe the GW data used in this work in \ref{sec:GWdata}.
 We briefly review SR in section \ref{sec:method}.
 We present our main result in section \ref{sec:result}.
@@ -178,19 +178,11 @@ We discuss the potential usage and extension of this work in section \ref{sec:di
 
 \subsection{Symbolic regression}
 
-Symbolic regression is a machine learning (ML) algorithm for regression which searches  for analytic expressions which optimize some loss function.
-Whereas one can fit most ML algorithms to data by optimizing a fixed set number of real parameters, for symbolic regression, one typically uses using a ``genetic algorithm.'' This genetic algorithm arranges symbols in a tree, evaluates the resultant expression, and repeats this process until a particular goal is met.
-Since models for physical phenomena are often specified in a language of concise mathematical expressions, symbolic regression can produce very interpretable models compared to traditional ML, as the ``trained model'' generated by symbolic regression is in the same \textit{language} as existing physical models (i.e., analytic expressions).
+While most ML algorithms optimizie a fixed set number of real parameters,
+Symbolic regression is a machine learning (ML) algorithm for regression which searches for analytic expressions which optimize some loss function.
+The search typically employs a ``genetic algorithm'', which arranges symbols in a tree, evaluates the resultant expression, and repeats this process until a particular goal is met.
+Since models for physical phenomena are often specified in a language of concise mathematical expressions, symbolic regression can produce interpretable models compared to traditional ML, as the ``trained model'' generated by symbolic regression is in the same \textit{language} as existing physical models (i.e., analytic expressions).
 Therefore, symbolic regression can produce insights for science in a way that traditional ML cannot.
-
-% Give history
-%Symbolic regression has a disconnected history,
-% with some early work going back to \mc{langley citations}.
-%The first application of genetic algorithms
-%to symbolic regression was done by \mc{koza}, before this class of algorithms was popularized in the sciences by \mc{lipson}.
-% \mc{Cite examples in astronomy.}
-% \mc{Describe how PySR works.}
-
 
 \begin{table*}[hbt!]
     \begin{center}
