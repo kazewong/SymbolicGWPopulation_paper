@@ -206,7 +206,7 @@ Therefore, symbolic regression can produce insights for science in a way that tr
     \end{tabular}
     \caption{Expressions obtained through symbolic regression with \pysr.
     In the search we perform, there are 30 equations with different complexities.
-    We select three most representative equations by setting loss thresholds, and selecting the highest scoring expression below each threshold. This strategy rules out trivial expressions with low accuracy which had high scores only because they were adjacent to other trivial expressions.}
+    We select three representative equations from the Pareto front by setting three successive complexity ranges, and selecting the highest scoring expression in each range.}
     \label{tab:equations}
     \end{center}
 \end{table*}
@@ -240,9 +240,12 @@ Formally, for our setting, \pysr solves the following optimization problem:
             \begin{array}{c}s\in\mathcal{S}\\ \abs{s} = c \end{array}
         }
         \mathcal{L}(s),
-    \quad\text{for each } c\in \mathcal{C},\nonumber\\
-    &\text{where }\mathcal{L}(s) = \sum_i \ell(s(\mathbf{x}_i), y_i)
+    \quad\text{for each } c\in \mathcal{C},\nonumber
 \end{align}
+where the loss function $\mathcal{L}$ is defined as:
+\begin{equation}
+\mathcal{L}(s) = \sum_i \ell(s(\mathbf{x}_i), y_i),
+\end{equation}
 where $s$ is an expression, 
 $\mathcal{S}$ is a space of possible expressions considered,
 $\abs{s}$ is the complexity of an expression $s$,
