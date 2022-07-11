@@ -257,16 +257,16 @@ as the number of symbols in the expression (including repeats),
 and $\ell$ is defined as $(\hat{y}_i, y_i) = \qty(\hat{y}_i - y_i)^2$.
 
 Next, given the set of the best expressions at each complexity $\mathcal{S}^\ast = \{s_c\}_{c\in\{1,\ldots,80\}}$,
-Next, we can construct the \textit{Pareto curve}, defined as:
+Next, we can construct the \textit{Pareto front}, defined as:
 \begin{equation}
-    \hat{\mathcal{S}}^\ast = \{s_c \ |\ \mathcal{L}(s_c) < \mathcal{L}(s_q) \forall c > q \},
+    \hat{\mathcal{S}}^\ast = \{s_c \ |\ \mathcal{L}(s_c) < \mathcal{L}(s_q) \forall q < c \},
 \end{equation}
 such that each remaining expression is more accurate than all simpler expressions.
-Using this, we can define the \textit{score} of an expression as the slope of the Pareto curve, equal to:
+Using this, we can define the \textit{score} of an expression as the slope of the Pareto front, equal to:
 \begin{equation}
     \text{score} = \frac{\Delta (-\log \mathcal{L}(s))}{\Delta(\abs{s})},
 \end{equation}
-which is a heuristic for the quality of a particular equation, used in the symbolic regression literature \cite{schmidtDistillingFreeFormNatural2009,cranmerDiscoveringSymbolicModels2020}.
+which is a heuristic for the quality of a particular equation, used in the symbolic regression literature \citep[see, e.g.,][]{schmidtDistillingFreeFormNatural2009,cranmerDiscoveringSymbolicModels2020}.
 
 % \todo{Note how much computational power was used, what other PySR settings were used. Could link the script in the paper repo.}
 
