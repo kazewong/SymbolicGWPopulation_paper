@@ -247,9 +247,8 @@ $\ell$ is the loss function, and $\{(x_i, y_i)\}$ is the dataset
 for $x_i$ each input and $y_i$ the label.
 The most accurate expression at each $c$, denoted as $s_c$, is computed for a given set range of $c$, which we choose as $c\in\mathcal{C}\equiv \{1, \ldots, 50\}$.
 Complexity is defined here
-as a sum of the complexity of each symbol in the expression,
-and $\ell(\hat{y}_i, y_i) = \qty(\hat{y}_i - y_i)^2$.
-% \todo{What complexities were chosen?}
+as the number of symbols in the expression (including repeats),
+and $\ell$ is defined as $(\hat{y}_i, y_i) = \qty(\hat{y}_i - y_i)^2$.
 
 Next, given the set of the best expressions at each complexity $\mathcal{S}^\ast = \{s_c\}_{c\in\{1,\ldots,80\}}$,
 Next, we can construct the \textit{Pareto curve}, defined as:
