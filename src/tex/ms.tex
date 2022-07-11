@@ -196,7 +196,7 @@ Therefore, symbolic regression can produce insights for science in a way that tr
     \hline
     \hline
     16 & 0.126   & 0.212  & $3.72 \rm{Cond}{\left(M - 9.27,0.9^{M} \right)} + 3.72 \rm{Gauss}{\left(0.52 M - 4.85 \right)}$\\[0.4em]
-    % Add more space between rows of table:
+    % Add more space between rows of table^
     25 & 0.501   & 0.0352 & $3.89 \left(\rm{Gauss}{\left(0.19 M - 6.54 \right)} + 0.45\right) \rm{Cond}{\left(M - 9.12,0.91^{M} \right)}$\\
     & & & $ + 3.89 \rm{Gauss}{\left(0.5 M - 4.8 \right)}$\\[0.4em]
     48 & 0.00771 & 0.0108 & $\left(\rm{Cond}{\left(M - 9.42,0.62 \cdot 0.9^{M} \right)} + 1.44 \rm{Gauss}{\left(0.51 M - 4.88 \right)}\right)$\\
@@ -275,7 +275,10 @@ For example, Kepler's laws were an empirical model crafted by hand to fit patter
 Astronomy has seen increasing use of symbolic regression to find new empirical models in an automated way \citep[e.g.,][]{grahamMachineassistedDiscoveryRelationships2013,cranmerDiscoveringSymbolicModels2020,wadekarModelingAssemblyBias2020,delgadoModelingGalaxyhaloConnection2021,cranmerHistogramPoolingOperators2021,shaoFindingUniversalRelations2021}.
 
 Here, we use symbolic regression for the first time to learn population density models in astrophysics.
-One of the main advantages of symbolic regression is to learn a model into an interpretable language, and, therefore, we define a set of operators which frequently occur in GW population models: addition, subtraction, division, power laws, Gaussians (unary operator: $f(x)=\exp(-x^2)$), and conditional statements (binary operator: $g(x, y)=\operatorname{if}(x \geq 0, y, 0)$). 
+One of the main advantages of symbolic regression is to learn a model into an interpretable language, and, therefore, we define a set of operators which frequently occur in GW population models: addition, subtraction, division, power laws, square, Gaussians (unary operator: $f(x)=\exp(-x^2)$), and conditional statements (binary operator: $g(x, y)=\operatorname{if}(x \geq 0, y, 0)$). 
+To simplify our assumptions, all operators are assigned the same complexity of $1$.
+We also introduce additional constraints on how operators may be nested inside each other to rule out uninterpretable expressions; these are defined in \cref{sec:constraints}.
+
 % \todo{Specify how combinations of operators are ruled out}
 
 \section{Gravitational-Wave Data}
@@ -383,5 +386,20 @@ As size of data sets grows larger in astronomy, this work provides a simple and 
 
 \bibliographystyle{icml2022}
 \bibliography{bib}
+
+\appendix
+\section{Operator constraints}
+\label{sec:constraints}
+
+We implement several constraints on the space of expressions, to rule out uninterpretable combinations of operators.
+We impose the following nested constraints:
+\begin{enumerate}
+    \item No operator with arity of 1 (i.e., taking a single argument) may be nested with another arity-1 operator, unless the operator is square.
+    \begin{enumerate}
+        \item However, a square can only be nested inside itself once.
+    \end{enumerate}
+    \item A division operator may only be nested inside itself once.
+    \item A power operator may not contain any arity-1 operator, except a square.
+\end{enumerate}
 
 \end{document}
