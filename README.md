@@ -10,4 +10,4 @@ As more gravitational-wave (GW) events are detected, flexible models such as Gau
 However, flexible models come with many parameters that lack physical motivation, making interpreting the implication of these models challenging.
 In this work, we demonstrate symbolic regression can complement flexible models by distilling the posterior predictive distribution of such flexible models into interpretable analytic expressions.
 We recover common GW population models such as a power-law-plus-Gaussian, and find a new empirical population model which combines accuracy and simplicity.
-This demonstrates a promising pathway to discover interpretable population models, automatically, from the GW merger catalogs and other astrophysical phenomena.
+This demonstrates a strategy to automatically discover interpretable population models in the ever-growing GW catalog, which can potentially be applied to other astrophysical phenomena.
