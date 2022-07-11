@@ -211,7 +211,7 @@ Therefore, symbolic regression can produce insights for science in a way that tr
     \end{tabular}
     \caption{Expressions obtained through symbolic regression with \pysr.
     In the search we perform, there are 30 equations with different complexities.
-    We select three most representative equations using a combination of score and loss threshold.}
+    We select three most representative equations by setting loss thresholds, and selecting the highest scoring expression below each threshold. This strategy rules out trivial expressions with low accuracy which had high scores only because they were adjacent to other trivial expressions.}
     \label{tab:equations}
     \end{center}
 \end{table*}
