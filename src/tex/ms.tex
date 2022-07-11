@@ -282,8 +282,6 @@ One of the main advantages of symbolic regression is to learn a model into an in
 To simplify our assumptions, all operators are assigned the same complexity of $1$.
 We also introduce additional constraints on how operators may be nested inside each other to rule out uninterpretable expressions; these are defined in \cref{sec:constraints}.
 
-% \todo{Specify how combinations of operators are ruled out}
-
 \section{Gravitational-Wave Data}
 \label{sec:GWdata}
 
@@ -325,12 +323,11 @@ As we increase the complexity of the equation, it is natural to expect that the 
 At the same time, an equation with higher complexity could either be overfitting or difficult to interpret.
 \pysr uses a score (see \citealt{cranmerDiscoveringSymbolicModels2020} for details) as a metric normalized to complexity to show how well an equation is fitting the data.
 At each complexity, \pysr outputs the equation with the lowest loss.
-To select the equations shown in figure \ref{fig:Gaussian_m1_fit}, we first make an accuracy cut based on the loss of the function, so the selected equation would be a good fit to the data.
-Then under a certain loss level, we select the equation that has the highest score.
-We choose three accuracy levels to select three different equations in our analysis.
-% \todo{Specify how the thresholds were chosen}
+To select the equations shown in figure \ref{fig:Gaussian_m1_fit}, we first make an accuracy cut based on the loss of the function such that all expressions have a loss lower than $0.3$, so the selected equation would still be a good fit to the data.
+We then consider the expressions with the highest score among three ranges: $c\in [1, 20]$,
+$c\in[20, 35]$, and $c\in[35, 50]$.
+These ranges are set to simply give us a variety of complexity expressions to study.
 The equations selected under these criteria are tabulated in table \ref{tab:equations}.
-Note that we take the absolute value of the equations in order to make figure \ref{fig:Gaussian_m1_fit}.
 
 The lowest complexity (16) equation returned is a decaying exponential function with a Gaussian bump at the lower end of the mass distribution.
 This agrees with a recent study pointing out there is a very strong excess of events at $m_{1}\sim 10\ M_{\odot}$,
