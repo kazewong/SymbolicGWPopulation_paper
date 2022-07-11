@@ -107,7 +107,7 @@ As more gravitational-wave (GW) events are detected, flexible models such as Gau
 However, flexible models come with many parameters that lack physical motivation, making interpreting the implication of these models challenging.
 In this work, we demonstrate symbolic regression can complement flexible models by distilling the posterior predictive distribution of such flexible models into interpretable analytic expressions.
 We recover common GW population models such as a power-law-plus-Gaussian, and find a new empirical population model which combines accuracy and simplicity.
-This demonstrates a promising pathway to automatically discover interpretable population models in the ever-growing GW catalog.
+This demonstrates a promising pathway to automatically discover interpretable population models in the ever-growing GW catalog, which can potentially be applied to other astrophysical phenomena.
 \end{abstract}
 
 \section{Introduction}
@@ -154,9 +154,10 @@ first, these models often have many parameters;
 in GWTC3, the GMM has over 100 parameters.
 With so many degrees of freedom, it is non-trivial to analyze contributions from each mode and attempt to disentangle meaningful patterns.
 Second, flexible models often employ bases that are not physically motivated.
-For example, consider if one wished to assess which parameter in a fitted GMM is the most important: one may apply a Principal Component Analysis (PCA) to the set of parameters and find the most important component.
-However, the PCA basis for this dataset is not a basis that is directly related to any astrophysical process,
-so having the relative importance in that form does not provide insight into astrophysics directly. \todo{This makes no sense. Wouldn’t you look at the amplitude?} \kw{PCA is a transformed coordinate that describe the data, I can't look at the amplitude of a PCA component and know exactly what it means astrophysically. You won't report the PCA value in your abstract since it has no physical meaning.}
+For example, the GMM models has 11 independent Gaussian components in the mass-spin space.
+While one or two Gaussians in mass or spin space alone can be physically motivated,
+the rest of the components are included in the model jsut to fit for unexpected features.
+Therefore, interpreting the importance of each component could be complicated by the components that are not physically motiviated.
 
 Symbolic regression (SR) is a machine learning technique which searches to space of analytic expressions to fit a dataset, which complements the weakness of a flexible model in understanding the distribution of GW.
 However, since SR does not take advantage of using gradient information when searching for expressions,
