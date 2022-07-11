@@ -249,7 +249,8 @@ for $\mathbf x_i$ each input and $y_i$ the label.
 The most accurate expression at each $c$, denoted as $s_c$, is computed for a given set range of $c$, which we choose as $c\in\{1, \ldots, 80\}$.
 Complexity is defined here
 as a sum of the complexity of each symbol in the expression,
-and $\ell(\hat{y}_i, y_i) = \qty(\hat{y}_i - y_i)^2$. \todo{What complexities were chosen?}
+and $\ell(\hat{y}_i, y_i) = \qty(\hat{y}_i - y_i)^2$.
+% \todo{What complexities were chosen?}
 
 Next, given the set of the best expressions at each complexity $\mathcal{S}^\ast = \{s_c\}_{c\in\{1,\ldots,80\}}$,
 Next, we can construct the \textit{Pareto curve}, defined as:
@@ -263,7 +264,7 @@ Using this, we can define the \textit{score} of an expression as the slope of th
 \end{equation}
 which is a heuristic for the quality of a particular equation, used in the symbolic regression literature \cite{eureqa,cranmerDiscoveringSymbolicModels2020}.
 
-\todo{Note how much computational power was used, what other PySR settings were used. Could link the script in the paper repo.}
+% \todo{Note how much computational power was used, what other PySR settings were used. Could link the script in the paper repo.}
 
 \paragraph{Implementation for GWs}
 % Describe reanalysizing the real data using the extracted expression
@@ -273,7 +274,8 @@ For example, Kepler's laws were an empirical model crafted by hand to fit patter
 Astronomy has seen increasing use of symbolic regression to find new empirical models in an automated way \citep[e.g.,][]{grahamMachineassistedDiscoveryRelationships2013,cranmerDiscoveringSymbolicModels2020,wadekarModelingAssemblyBias2020,delgadoModelingGalaxyhaloConnection2021,cranmerHistogramPoolingOperators2021,shaoFindingUniversalRelations2021}.
 
 Here, we use symbolic regression for the first time to learn population density models in astrophysics.
-One of the main advantages of symbolic regression is to learn a model into an interpretable language, and, therefore, we define a set of operators which frequently occur in GW population models: addition, subtraction, division, power laws, Gaussians (unary operator: $f(x)=\exp(-x^2)$), and conditional statements (binary operator: $g(x, y)=\operatorname{if}(x \geq 0, y, 0)$). \todo{Specify how combinations of operators are ruled out}
+One of the main advantages of symbolic regression is to learn a model into an interpretable language, and, therefore, we define a set of operators which frequently occur in GW population models: addition, subtraction, division, power laws, Gaussians (unary operator: $f(x)=\exp(-x^2)$), and conditional statements (binary operator: $g(x, y)=\operatorname{if}(x \geq 0, y, 0)$). 
+% \todo{Specify how combinations of operators are ruled out}
 
 \section{Gravitational-Wave Data}
 \label{sec:GWdata}
@@ -281,7 +283,8 @@ One of the main advantages of symbolic regression is to learn a model into an in
 GW data comes in the form of time series, in which each time sample carries very little physical meaning.
 It is easier to understand the physical implication of a GW event through its inferred source properties \cite{Veitch:2014wba}.
 In the case of a BBH, the source properties include the masses of the two merging black holes.
-Understanding the population of GW events supports out understanding of the distribution of source properties, such as the mass distribution of black holes \cite{2019PASA...36...10T,Vitale:2020aaz}.
+On top of extracting physics from individual events,
+we can also learn about astrophysical processes through understanding of the distribution of source properties, such as the mass distribution of black holes \cite{2019PASA...36...10T,Vitale:2020aaz}.
 
 In principle, one can apply symbolic regression to fit these distributions directly.
 Unfortunately, GW observations are extremely noisy. As a result, all inferred properties about the source such as the observed masses or distance to the source come with sizable uncertainty, often comparable to the prior used in inferring their source properties.
@@ -309,7 +312,7 @@ We also estimate the uncertainty of the value at each evaluation point using the
 
 We show the workflow of this work in figure \ref{fig:Gaussian_m1_fit}.
 On the leftmost panel, we show the posterior density in primary mass for every event in GWTC3.
-In the middle panel \todo{Shouldn’t it be left-middle?}, we show a GMM fitted to the data given by \cite{Tiwari:2020vym}.
+In the left-middle panel, we show a GMM fitted to the data given by \cite{Tiwari:2020vym}.
 Given the \ppd shown in the middle panel, we use symbolic regression to extract effective descriptions of the data. 
 As we increase the complexity of the equation, it is natural to expect that the equation should fit the data better than a lower complexity equation since it has additional free parameters.
 At the same time, an equation with higher complexity could either be overfitting or difficult to interpret.
@@ -317,9 +320,10 @@ At the same time, an equation with higher complexity could either be overfitting
 At each complexity, \pysr outputs the equation with the lowest loss.
 To select the equations shown in figure \ref{fig:Gaussian_m1_fit}, we first make an accuracy cut based on the loss of the function, so the selected equation would be a good fit to the data.
 Then under a certain loss level, we select the equation that has the highest score.
-We choose three accuracy levels to select three different equations in our analysis \todo{Specify how the thresholds were chosen}.
+We choose three accuracy levels to select three different equations in our analysis.
+% \todo{Specify how the thresholds were chosen}
 The equations selected under these criteria are tabulated in table \ref{tab:equations}.
-Note that we take the absolute value of the equations in order to make figure \ref{fig:Gaussian_m1_fit}.\todo{Is this still true?}
+Note that we take the absolute value of the equations in order to make figure \ref{fig:Gaussian_m1_fit}.
 
 The lowest complexity (16) equation returned is a decaying exponential function with a Gaussian bump at the lower end of the mass distribution.
 This agrees with a recent study pointing out there is a very strong excess of events at $m_{1}\sim 10\ M_{\odot}$,
@@ -354,7 +358,7 @@ In this paper, we use symbolic regression to extract interpretable equations fro
 We show SR can discover equations which are similar to state-of-the-art phenomenological models.
 On top of finding forms that have already been discovered,
 our result also shed insights on an open question---whether there exist additional features other than the two prominent peaks in the primary mass distribution \cite{Tiwari:2021yvr}.
-Our results suggest interpreting any additional features such as tapering of the continuum or wiggles between the two peaks can be tricky as their significance are unclear. \todo{Clean up language}
+The additional suggest interpreting any additional features such as tapering of the continuum or wiggles between the two peaks can be tricky as their significance are unclear.
 
 The main message of this work is that by combining flexible models with symbolic regression, we can discover interpretable equations that can describe the increasingly complex GW catalog.
 Compared to traditional methods such as phenomenological modeling, which relies on an individual's insight,
@@ -364,13 +368,13 @@ Once we obtain a set of equations, we can plug the expressions in a standard HBA
 This allows the community to discover interpretable patterns in the GW catalog in a data-driven instead of model-driven manner.
 In this sense, our method is more scalable to more complex and higher-dimensional datasets.
 
-
 In this work, we focus on analyzing only the primary mass distribution.
 Our method is trivially generalizable to higher-dimensional data, such as the joint space of both the primary mass and the secondary mass.
 So far there are relatively few phenomenological models which can capture correlations between observables,
 mainly due to the difficulty of manually constructing reasonable models to account for these correlations.
 At the same time, the most advanced flexible model in the literature is an n-dimensional histogram, which is hard to interpret.
-Our method can be a natural way to explore and to explain these correlations. \todo{Say something about how this can be used for other astrophysical phenomena!}
+Our method can be a natural way to explore and to explain these correlations.
+
 
 
 \bibliographystyle{icml2022}
