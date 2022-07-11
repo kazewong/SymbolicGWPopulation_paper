@@ -240,12 +240,9 @@ Formally, for our setting, \pysr solves the following optimization problem:
             \begin{array}{c}s\in\mathcal{S}\\ \abs{s} = c \end{array}
         }
         \mathcal{L}(s),
-    \quad\text{for each } c\in \mathcal{C},\nonumber
+    \quad\text{for each } c\in \mathcal{C},
 \end{align}
-where the loss function $\mathcal{L}$ is defined as:
-\begin{equation}
-\mathcal{L}(s) = \sum_i \ell(s(\mathbf{x}_i), y_i),
-\end{equation}
+for the loss function $\mathcal{L}(s) = \sum_i \ell(s(\mathbf{x}_i), y_i),$
 where $s$ is an expression, 
 $\mathcal{S}$ is a space of possible expressions considered,
 $\abs{s}$ is the complexity of an expression $s$,
@@ -262,10 +259,7 @@ Next, we can construct the \textit{Pareto front}, defined as:
     \hat{\mathcal{S}}^\ast = \{s_c \ |\ \mathcal{L}(s_c) < \mathcal{L}(s_q) \forall q < c \},
 \end{equation}
 such that each remaining expression is more accurate than all simpler expressions.
-Using this, we can define the \textit{score} of an expression as the slope of the Pareto front, equal to:
-\begin{equation}
-    \text{score} = -\frac{d(\log \mathcal{L}(s_c))}{d\; c},
-\end{equation}
+Using this, we can define the \textit{score} of an expression as the slope of the Pareto front, equal to: $\text{score} = -\Delta(\log \mathcal{L}(s_c))/\Delta c,$
 which is a heuristic for the quality of a particular equation, used in the symbolic regression literature \citep[see, e.g.,][]{schmidtDistillingFreeFormNatural2009,cranmerDiscoveringSymbolicModels2020}.
 
 % \todo{Note how much computational power was used, what other PySR settings were used. Could link the script in the paper repo.}
@@ -297,7 +291,7 @@ This also means the posterior distribution of these inferred properties often ha
 Moreover, since there are only 79 announced events, the shot noise makes it challenging to extract meaningful information if we first stack the events and fit the distribution with symbolic regression.
 
 In order to maximally extract information from the GW catalog, the community has employed Hierarchical Bayesian Analysis (HBA) to analyze the distribution of GW events.
-HBA takes advantage of the fact that measurement uncertainties for each event are conditionally independent from the population model, so we can deconvolve the measurement uncertainty for each event (\cite{10.1214/10-AOAS439} describes this as extreme deconvolution) while fitting for the underlying distribution of GW events\footnote{For interested readers, \cite{Mandel:2018mve,Vitale:2020aaz,2019MNRAS.484.4008G} are excellent references with practical examples on how to apply the HBA framework to GW data.
+HBA takes advantage of the fact that measurement uncertainties for each event are conditionally independent from the population model, so we can deconvolve the measurement uncertainty for each event (\citealt{10.1214/10-AOAS439} describes this as extreme deconvolution) while fitting for the underlying distribution of GW events\footnote{For interested readers, \cite{Mandel:2018mve,Vitale:2020aaz,2019MNRAS.484.4008G} are excellent references with practical examples on how to apply the HBA framework to GW data.
 }.
 
 \newcommand\ppd{posterior predictive distribution\xspace} %PPD\xspace
