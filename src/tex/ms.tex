@@ -264,7 +264,7 @@ Next, we can construct the \textit{Pareto front}, defined as:
 such that each remaining expression is more accurate than all simpler expressions.
 Using this, we can define the \textit{score} of an expression as the slope of the Pareto front, equal to:
 \begin{equation}
-    \text{score} = \frac{\Delta (-\log \mathcal{L}(s))}{\Delta(\abs{s})},
+    \text{score} = -\frac{d(\log \mathcal{L}(s_c))}{d\; c},
 \end{equation}
 which is a heuristic for the quality of a particular equation, used in the symbolic regression literature \citep[see, e.g.,][]{schmidtDistillingFreeFormNatural2009,cranmerDiscoveringSymbolicModels2020}.
 
