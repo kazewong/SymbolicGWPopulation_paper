@@ -387,19 +387,32 @@ As size of data sets grows larger in astronomy, this work provides a simple and 
 \bibliographystyle{icml2022}
 \bibliography{bib}
 
+\clearpage
 \appendix
 \section{Operator constraints}
 \label{sec:constraints}
 
-We implement several constraints on the space of expressions, to rule out uninterpretable combinations of operators.
+With full flexibility over how symbolic operators can be arranged up to a maximum number, surprisingly many combinations exist which are simple and accurate, yet completely uninterpretable.
+Typically, a genetic algorithm might find that a particular deeply nested combination of operators might perform very well, with the overall complexity being low.
+However, we wish to find a model that is interpretable, and so we provide some additional constraints here.
+
+First, we implement limits on which operators can be nested, and how deeply.
 We impose the following nested constraints:
 \begin{enumerate}
-    \item No operator with arity of 1 (i.e., taking a single argument) may be nested with another arity-1 operator, unless the operator is square.
+    \item No operator with arity of 1 (i.e., an operator taking a single argument) may be nested with another arity-1 operator, unless the operator is square.
     \begin{enumerate}
-        \item However, a square can only be nested inside itself once.
+        \item However, we permit a square to be nested inside itself once, as such a combination may be used to make a quadratic operation with few operations.
     \end{enumerate}
-    \item A division operator may only be nested inside itself once.
-    \item A power operator may not contain any arity-1 operator, except a square.
+    \item The division operator may only be nested inside itself once.
+    \item The power operator may not contain any arity-1 operator.
 \end{enumerate}
+We also impose the following constraints on maximum complexity within each operator:
+\begin{enumerate}
+    \item The power operator may only have a maximum complexity of 9 in its base, and 3 in its exponent.
+    \item The division operator may have any complexity in the numerator, but a maximum complexity of 7 in the denominator.
+    \item The Gauss operator may only have a maximum complexity of 11 in its argument.
+    \item The conditional operator may only have a maximum complexity of 5 in its condition, and 11 in its resultant argument.
+\end{enumerate}
+These prevent \pysr from finding expressions which, despite being low-complexity and high-accuracy, are still uninterpretable to a human scientist due to unusual combinations of operators compared to typical expressions found throughout physics and astrophysics.
 
 \end{document}
