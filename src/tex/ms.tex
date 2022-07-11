@@ -227,14 +227,14 @@ We use the algorithm \pysr\footnote{\url{https://github.com/MilesCranmer/PySR}} 
 Loosely inspired by \textit{eureqa},
 \pysr searches the space of trees 
 containing a basis set of specified operators, variables, and arbitrary real constants
-to find an expression that best matches a given dataset.
+to find expressions which fit relations in a given dataset.
 \pysr uses ``regularized evolution'' for its search strategy 
 \cite{realRegularizedEvolutionImage2019,realAutoMLZeroEvolvingMachine2020},
 which itself is a variant on classic tournament selection
 \cite{brindleGeneticAlgorithmsFunction1980,goldbergComparativeAnalysisSelection1991}.
 This algorithm simulates natural selection: each expression is represented by a tree, corresponding to its ``genetic code.''
 Expressions are subsampled, and the fittest expression in each group (using a metric which combines accuracy and simplicity) is used to breed new mutated expressions, as well as cross-bred with other top expressions.
-\pysr adds several additional techniques onto these classic algorithms, such as explicit constant optimization using BFGS \cite{fletcherPracticalMethodsOptimization1988}, and an adaptive complexity penalty, while allowing the use of custom operators and losses which is important for this work.
+\pysr adds several additional techniques onto these classic algorithms, such as explicit constant optimization using the \textit{BFGS} optimization algorithm \cite{fletcherPracticalMethodsOptimization1988}, and an adaptive complexity penalty, while allowing the use of custom operators and losses which is important for this work.
 
 Internal to \pysr, a multi-objective optimization problem is solved: the evolution seeks to find expressions which are as accurate as possible, while being as simple as possible.
 Formally, for our setting, \pysr solves the following optimization problem:
@@ -257,7 +257,7 @@ for $\mathbf x_i$ each input and $y_i$ the label.
 The most accurate expression at each $c$, denoted as $s_c$, is computed for a given set range of $c$, which we choose as $c\in\{1, \ldots, 80\}$.
 Complexity is defined here
 as a sum of the complexity of each symbol in the expression,
-and $\ell(\hat{y}_i, y_i) = \qty(\hat{y}_i - y_i)^2$.
+and $\ell(\hat{y}_i, y_i) = \qty(\hat{y}_i - y_i)^2$. \todo{What complexities were chosen?}
 
 Next, given the set of the best expressions at each complexity $\mathcal{S}^\ast = \{s_c\}_{c\in\{1,\ldots,80\}}$,
 Next, we can construct the \textit{Pareto curve}, defined as:
@@ -271,6 +271,8 @@ Using this, we can define the \textit{score} of an expression as the slope of th
 \end{equation}
 which is a heuristic for the quality of a particular equation, used in the symbolic regression literature \cite{eureqa,cranmerDiscoveringSymbolicModels2020}.
 
+\todo{Note how much computational power was used, what other PySR settings were used. Could link the script in the paper repo.}
+
 \paragraph{Implementation for GWs}
 % Describe reanalysizing the real data using the extracted expression
 % After obtaining a number of 
@@ -279,7 +281,7 @@ For example, Kepler's laws were an empirical model crafted by hand to fit patter
 Astronomy has seen increasing use of symbolic regression to find new empirical models in an automated way \citep[e.g.,][]{grahamMachineassistedDiscoveryRelationships2013,cranmerDiscoveringSymbolicModels2020,wadekarModelingAssemblyBias2020,delgadoModelingGalaxyhaloConnection2021,cranmerHistogramPoolingOperators2021,shaoFindingUniversalRelations2021}.
 
 Here, we use symbolic regression for the first time to learn population density models in astrophysics.
-One of the main advantages of symbolic regression is to learn a model into an interpretable language, and, therefore, we define a set of operators which frequently occur in GW population models: addition, subtraction, division, power laws, Gaussians (unary operator: $f(x)=\exp(-x^2)$), and conditional statements (binary operator: $g(x, y)=\operatorname{if}(x \geq 0, y, 0)$).
+One of the main advantages of symbolic regression is to learn a model into an interpretable language, and, therefore, we define a set of operators which frequently occur in GW population models: addition, subtraction, division, power laws, Gaussians (unary operator: $f(x)=\exp(-x^2)$), and conditional statements (binary operator: $g(x, y)=\operatorname{if}(x \geq 0, y, 0)$). \todo{Specify how combinations of operators are ruled out}
 
 
 \section{Gravitational-Wave Data}
@@ -288,26 +290,26 @@ One of the main advantages of symbolic regression is to learn a model into an in
 GW data comes in the form of time series, in which each time sample carries very little physical meaning.
 It is easier to understand the physical implication of a GW event through its inferred source properties \cite{Veitch:2014wba}.
 In the case of a BBH, the source properties include the masses of the two merging black holes.
-Understanding the population of GW events is essentially understanding the distribution of source properties, such as the mass distribution of black holes \cite{2019PASA...36...10T,Vitale:2020aaz}.
+Understanding the population of GW events supports out understanding of the distribution of source properties, such as the mass distribution of black holes \cite{2019PASA...36...10T,Vitale:2020aaz}.
 
 In principle, one can apply symbolic regression to fit these distributions directly.
 Unfortunately, GW observations are extremely noisy. As a result, all inferred properties about the source such as the observed masses or distance to the source come with sizable uncertainty, often comparable to the prior used in inferring their source properties.
-This also means the posterior distribution of these inferred properties often has a non-trivial shape that the typical Gaussian approximation of "error bar" does not hold.
-On top of that, since there are only 79 announced events, the shot noise makes it very difficult to extract meaningful information if we first stack the events and fit the distribution with symbolic regression.
+This also means the posterior distribution of these inferred properties often has a non-trivial shape that the typical Gaussian approximation of ``error bar’’ does not hold.
+Moreover, since there are only 79 announced events, the shot noise makes it challenging to extract meaningful information if we first stack the events and fit the distribution with symbolic regression.
 
-In order to maximally extract information from the GW catalog, the community has employed Hierarchical Bayesian analysis (HBA) to analyze the distribution of GW events.
+In order to maximally extract information from the GW catalog, the community has employed Hierarchical Bayesian Analysis (HBA) to analyze the distribution of GW events.
 HBA takes advantage of the fact that measurement uncertainties for each event are conditionally independent from the population model, so we can deconvolve the measurement uncertainty for each event (\cite{10.1214/10-AOAS439} describes this as extreme deconvolution) while fitting for the underlying distribution of GW events\footnote{For interested readers, \cite{Mandel:2018mve,Vitale:2020aaz,2019MNRAS.484.4008G} are excellent references with practical examples on how to apply the HBA framework to GW data.
 }.
 
 \newcommand\ppd{posterior predictive distribution\xspace} %PPD\xspace
 \newcommand{\defineppd}{} % (\ppd)
 
-One product coming out of this HBA pipeline is the posterior predictive distribution \defineppd for the properties of interest, i.e. a set of probability density functions that encapsulate the inferred source distribution and the uncertainty on the population level.
+One product coming out of this HBA pipeline is the posterior predictive distribution \defineppd for the properties of interest, i.e., a set of probability density functions that encapsulate the inferred source distribution and the uncertainty on the population level.
 It is much easier to find an interpretable form of the source distribution by fitting the \ppd with SR.
-In this study, we focus on understanding the distribution of binary black hole primary mass, i.e. the heavier mass in the binary.
+In this study, we focus on understanding the distribution of binary black hole primary mass, i.e., the heavier mass in the binary.
 One of the most flexible models that is fitted to this set of data is a Gaussian mixture model \cite{Tiwari:2020vym}.
 To generate the data that we feed to the SR pipeline,
-we select a number of evaluation points in the primary mass axis,
+we select many evaluation points in the primary mass axis,
 then we take the median of the \ppd given by the Gaussian mixture model as the value we are trying to predict.
 We also estimate the uncertainty of the value at each evaluation point using the $68\%$ confidence interval.
 
@@ -316,27 +318,27 @@ We also estimate the uncertainty of the value at each evaluation point using the
 
 We show the workflow of this work in figure \ref{fig:Gaussian_m1_fit}.
 On the leftmost panel, we show the posterior density in primary mass for every event in GWTC3.
-In the middle panel, we show a Gaussian mixture model is fitted to the data given by \cite{Tiwari:2020vym}.
+In the middle panel \todo{Shouldn’t it be left-middle?}, we show a GMM fitted to the data given by \cite{Tiwari:2020vym}.
 Given the \ppd shown in the middle panel, we use symbolic regression to extract effective descriptions of the data. 
-As we increase the complexity of the equation, it is natural to expect that the equation should fit the data better than a lower complexity equation since it has more free parameters.
+As we increase the complexity of the equation, it is natural to expect that the equation should fit the data better than a lower complexity equation since it has additional free parameters.
 At the same time, an equation with higher complexity could either be overfitting or difficult to interpret.
 \pysr uses a score (see \citealt{cranmerDiscoveringSymbolicModels2020} for details) as a metric normalized to complexity to show how well an equation is fitting the data.
 At each complexity, \pysr outputs the equation with the lowest loss.
 To select the equations shown in figure \ref{fig:Gaussian_m1_fit}, we first make an accuracy cut based on the loss of the function, so the selected equation would be a good fit to the data.
 Then under a certain loss level, we select the equation that has the highest score.
-We choose three accuracy levels to select three different equations in our analysis.
+We choose three accuracy levels to select three different equations in our analysis \todo{Specify how the thresholds were chosen}.
 The equations selected under these criteria are tabulated in table \ref{tab:equations}.
-Note that we take the absolute value of the equations in order to make figure \ref{fig:Gaussian_m1_fit}.
+Note that we take the absolute value of the equations in order to make figure \ref{fig:Gaussian_m1_fit}.\todo{Is this still true?}
 
 The lowest complexity (16) equation returned is a decaying exponential function with a Gaussian bump at the lower end of the mass distribution.
 This agrees with a recent study pointing out there is a very strong excess of events at $m_{1}\sim 10\ M_{\odot}$.
 In order to account for the bump around $30\ M_{\odot}$,
 the exponential part of this equation has a much higher normalization compared to the others.
-This agrees with the analysis done in GWTC3, where a single power-law seems to have trouble accounting for the excess of events around $m_{1}\sim 30\ M_{\odot}$\cite{LIGOScientific:2021psn}.
+This agrees with the analysis done in GWTC3, where a single power law seems to have trouble accounting for the excess of events around $m_{1}\sim 30\ M_{\odot}$\cite{LIGOScientific:2021psn}.
 
-Compared to the lowest complexity equation, the middle complexity (25) equation instead prefers a lower overall normalization of the exponential function,
+Compared to the lowest complexity equation, the middle complexity (25) equation instead prefers a lower normalization of the exponential function,
 but account for the bump around $30\ M_{\odot}$ with a Gaussian component.
-This equation is similar to one of the simplest phenomenological models fitted to GWTC3, which is a power-law mixed with a Gaussian bump.
+This equation is similar to one of the simplest phenomenological models fitted to GWTC3, which is a power law mixed with a Gaussian bump.
 The difference between this equation and the one presented in GWTC3 is this equation has an additional bump at $m_{1}\sim 10\ M_{\odot}$,
 which is also present in the lower complexity equation.
 This suggests the first bump at lower mass has more statistical significance than the second bump.
@@ -349,17 +351,17 @@ The significance of any features other than the two bumps and the continuum is s
 Our result hints the wiggles between the bumps seem to be less significant than the extra tapering of the continuum.
 In addition, none of the equations prefers to fit the extra hump before the $10\ M_{\odot}$ peak.
 This could mean the little hump could be an artifact in the Gaussian mixture model instead of a truly statistically significant feature.
-However, the loss of this equation is more or less similar to the middle complexity (25) equation, at the same time being almost twice as complex. As a result, the score is much lower, which means the tapering is not necessarily needed.
+However, the loss of this equation is similar to the middle complexity (25) equation, at the same time being almost twice as complex. As a result, the score is much lower, which means the tapering is not necessarily needed.
 
 \section{Discussion}
 \label{sec:discussion}
 
 % Brief summary of the paper
 In this paper, we use symbolic regression to extract interpretable equations from the \ppd of a flexible model fitted to the catalog of GWs.
-We show SR is able to discover equations that are similar to state-of-the-art phenomenological models.
+We show SR can discover equations which are similar to state-of-the-art phenomenological models.
 On top of finding forms that have already been discovered,
-our result also shed insights on an open question---whether there are additional features other than the two prominent peaks in the primary mass distribution \cite{Tiwari:2021yvr}.
-Our results suggest any additional features such as tapering of the continuum or wiggles between the two peaks are not statistically significant.
+our result also shed insights on an open question---whether there exist additional features other than the two prominent peaks in the primary mass distribution \cite{Tiwari:2021yvr}.
+Our results suggest any additional features such as tapering of the continuum or wiggles between the two peaks are not statistically significant \todo{I would lighten the language of this part - SR isn’t exactly statistically rigorous}.
 
 Compared to traditional methods such as phenomenological modeling, which relies on an individual's insight,
 our pipeline is fully automatic.
@@ -369,9 +371,9 @@ Hence, our method is more scalable to more complex and higher-dimensional datase
 In this work, we focus on analyzing only the primary mass distribution.
 Our method is trivially generalizable to higher-dimensional data, such as the joint space of both the primary mass and the secondary mass.
 So far there are relatively few phenomenological models which can capture correlations between observables,
-mainly due to the difficulty of writing down a reasonable model to account for these correlations.
+mainly due to the difficulty of manually constructing reasonable models to account for these correlations.
 At the same time, the most advanced flexible model in the literature is an n-dimensional histogram, which is hard to interpret.
-Our method can be a natural way to explore and to explain these correlations.
+Our method can be a natural way to explore and to explain these correlations. \todo{Say something about how this can be used for other astrophysical phenomena!}
 
 \bibliographystyle{icml2022}
 \bibliography{bib}
