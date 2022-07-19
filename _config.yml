@@ -2,7 +2,7 @@
 title:               Lanyon
 tagline:             'Symbolic regression for population models'
 description:         'Automated discovery of interpretable gravitational-wave population models'
-# baseurl:             '_site/'
+baseurl:           'https://github.com/kazewong/SymbolicGWPopulation_paper'
 paginate:            5
 permalink:           pretty
 
