@@ -19,8 +19,8 @@ We recover common GW population models such as a power-law-plus-Gaussian, and fi
 This demonstrates a strategy to automatically discover interpretable population models in the ever-growing GW catalog, which can potentially be applied to other astrophysical phenomena.
 
 <div id="start">
-    <video  autoplay>
-        <source src="/public/asset/FitMassFunction.mp4" type="video/mp4">
+    <video controls>
+        <source src="/SymbolicGWPopulation_paper/public/asset/FitMassFunction.mp4" type="video/mp4">
     </video>
 </div>
 
