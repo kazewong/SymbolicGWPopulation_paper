@@ -18,6 +18,12 @@ In this work, we demonstrate symbolic regression can complement flexible models 
 We recover common GW population models such as a power-law-plus-Gaussian, and find a new empirical population model which combines accuracy and simplicity.
 This demonstrates a strategy to automatically discover interpretable population models in the ever-growing GW catalog, which can potentially be applied to other astrophysical phenomena.
 
+<div id="start">
+    <video  autoplay>
+        <source src="/public/asset/FitMassFunction.mp4" type="video/mp4">
+    </video>
+</div>
+
 {% if page.comments %}
 <div id="disqus_thread"></div>
 <script>
