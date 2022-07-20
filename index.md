@@ -3,9 +3,6 @@ layout: default
 title: Home
 comments: true
 ---
-
-![Article status](https://github.com/kazewong/SymbolicGWPopulation_paper/actions/workflows/build.yml/badge.svg) ![Article tarball](https://img.shields.io/badge/article-tarball-blue.svg?style=flat) ![Read the article](https://img.shields.io/badge/article-pdf-blue.svg?style=flat)
-
 ## Automated discovery of interpretable gravitational-wave population models
 
 **Kaze W.K Wong** (Flatiron Institute), **Miles Cranmer** (Princeton University); (*equal contribution*)
@@ -18,11 +15,10 @@ In this work, we demonstrate symbolic regression can complement flexible models 
 We recover common GW population models such as a power-law-plus-Gaussian, and find a new empirical population model which combines accuracy and simplicity.
 This demonstrates a strategy to automatically discover interpretable population models in the ever-growing GW catalog, which can potentially be applied to other astrophysical phenomena.
 
-<div id="start">
-    <video controls>
-        <source src="/SymbolicGWPopulation_paper/public/asset/FitMassFunction.mp4" type="video/mp4">
-    </video>
-</div>
+{% include videos.html %}
+
+<!-- <iframe src="/SymbolicGWPopulation_paper/public/video/FitMassFunction.mp4" frameborder="0" allowfullscreen></iframe> -->
+
 
 {% if page.comments %}
 <div id="disqus_thread"></div>
