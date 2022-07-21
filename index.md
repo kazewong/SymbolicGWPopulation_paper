@@ -3,9 +3,13 @@ layout: default
 title: Home
 comments: true
 ---
-## Automated discovery of interpretable gravitational-wave population models
 
+
+## Automated discovery of interpretable gravitational-wave population models
 **Kaze W.K Wong** (Flatiron Institute), **Miles Cranmer** (Princeton University); (*equal contribution*)
+
+<img src="{{site.baseurl}}/public/image/Figure1.PNG">
+
 
 ## TL;DR
 1. There will be more and more gravitational wave (GW) events in the coming decade.
@@ -14,10 +18,13 @@ comments: true
 4. Symbolic regression can help distilling interpretable models from the flexible models
 5. We apply this to gravitational wave data, but this can be appied to other problems as well!
 
+## Main poster (~3 minutes read)
 
 {% include videos.html %}
 
 ## Take home messages
+
+
 
 ## A couple more things
 
