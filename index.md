@@ -3,8 +3,6 @@ layout: default
 title: Home
 comments: true
 ---
-
-
 ## Automated discovery of interpretable gravitational-wave population models
 **Kaze W.K Wong** (Flatiron Institute), **Miles Cranmer** (Princeton University); (*equal contribution*)
 
