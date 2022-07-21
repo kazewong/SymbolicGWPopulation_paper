@@ -1,8 +1,21 @@
+<p align="center">
+<a href="https://github.com/showyourwork/showyourwork">
+<img width = "450" src="https://raw.githubusercontent.com/showyourwork/.github/main/images/showyourwork.png" alt="showyourwork"/>
+</a>
 <br>
-<a href="https://github.com/kazewong/SymbolicGWPopulation_paper/actions/workflows/build.yml"> <img src="https://github.com/kazewong/SymbolicGWPopulation_paper/actions/workflows/build.yml/badge.svg" alt="Article status"/> </a>
-<a href="https://github.com/kazewong/SymbolicGWPopulation_paper/raw/main-pdf/arxiv.tar.gz"> <img src="https://img.shields.io/badge/article-tarball-blue.svg?style=flat" alt="Article tarball"/> </a> 
-<a href="https://github.com/kazewong/SymbolicGWPopulation_paper/raw/main-pdf/ms.pdf"> <img src="https://img.shields.io/badge/article-pdf-blue.svg?style=flat" alt="Read the article"/></a>
-<a href="https://kazewong.github.io/SymbolicGWPopulation_paper/">  <img src="https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Fkazewong.github.io%2FSymbolicGWPopulation_paper%2F"/> </a>
+<br>
+<a href="https://github.com/kazewong/SymbolicGWPopulation_paper/actions/workflows/build.yml">
+<img src="https://github.com/kazewong/SymbolicGWPopulation_paper/actions/workflows/build.yml/badge.svg" alt="Article status"/>
+</a>
+<a href="https://github.com/kazewong/SymbolicGWPopulation_paper/raw/main-pdf/arxiv.tar.gz">
+<img src="https://img.shields.io/badge/article-tarball-blue.svg?style=flat" alt="Article tarball"/>
+</a> 
+<a href="https://github.com/kazewong/SymbolicGWPopulation_paper/raw/main-pdf/ms.pdf">
+<img src="https://img.shields.io/badge/article-pdf-blue.svg?style=flat" alt="Read the article"/>
+</a>
+<a href="https://kazewong.github.io/SymbolicGWPopulation_paper/">
+<img src="https://img.shields.io/website?down_color=red&down_message=offline&up_color=green&up_message=online&url=https%3A%2F%2Fkazewong.github.io%2FSymbolicGWPopulation_paper%2F"/>
+</a>
 
 ## Automated discovery of interpretable gravitational-wave population models
 
