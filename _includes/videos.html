@@ -14,37 +14,50 @@
   height: 100%;
   border: 0;
 }
+.description {
+    text-align: justify;
+    text-justify: inter-word;
+}
 </style>
 
 <body>
-    <div>
+    <div class="description">
 
-        <h2>There are more and more gravitational wave events</h2>
-        Body text
+        <h2>Increasing number of gravitational wave events</h2>
         <div class="video-wrapper">
             <iframe src="/SymbolicGWPopulation_paper/public/video/GW_population.mp4" allowfullscreen></iframe>
         </div>
+        In the first LIGO observational run in 2015, there were 3 gravitational wave (GW) detections in 3 months.
+        In the second obserational run from November 2016 to August 2017, there were 8 detections in 9 months.
+        Then in the third observational run that started in 2019 and lasted for a year, there were 56 evented detected.
+
+
 
         <h2>Phenomenological modelling of the GW population</h2>
-        Body text
         <div class="video-wrapper">
             <iframe src="/SymbolicGWPopulation_paper/public/video/PhenomenologicalModelling.mp4" allowfullscreen></iframe>
         </div>
+        To analyze the population of GWs, the community often fit phenomenological models to the data,
+        such as using a power law or power law plus a Gaussian to model the primary mass distribution.
+        The problem is writing down a sensible phenomenological model depends on individual's intuition,
+        and ther are more difficult to construct when the data becomes incresingly complex.
 
         <h2>Flexible model?</h2>
-        Body text
         <div class="video-wrapper">
-            <iframe src="/SymbolicGWPopulation_paper/public/video/FitMassFunction.mp4" allowfullscreen></iframe>
+            <iframe src="/SymbolicGWPopulation_paper/public/video/FitMassFunction.mp4" allowfullscreen ></iframe>
         </div>
+        To solve the problem with phenomenological models, the community start looking into more flexible models,
+        such as Gaussian mixture models and neural network based models.
+        They are great at fitting the data, however, their flexibility makes them hard to interpret.
+        In a power law model, one can understand the implication of the spectral index.
+        For a neural network, it is much more difficult to determine the meaning of a particular weight in the model.
 
         <h2>Symbolic regression primer</h2>
-        Body text
         <div class="video-wrapper">
             <iframe src="/SymbolicGWPopulation_paper/public/video/SRMain.mp4" allowfullscreen></iframe>
         </div>
 
         <h2>Interpreting flexible models</h2>
-        <h4>Body text</h4>
         <div class="video-wrapper">
             <iframe src="/SymbolicGWPopulation_paper/public/video/FittingGWwithSR.mp4" allowfullscreen></iframe>
         </div>

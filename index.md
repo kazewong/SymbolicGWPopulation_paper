@@ -8,13 +8,12 @@ comments: true
 **Kaze W.K Wong** (Flatiron Institute), **Miles Cranmer** (Princeton University); (*equal contribution*)
 
 ## TL;DR
-There are more and more gravitational wave events 
-<!-- We present an automatic approach to discover analytic population models for gravitational-wave (GW) events from data.
-As more gravitational-wave (GW) events are detected, flexible models such as Gaussian Mixture Models have become more important in fitting the distribution of GW properties due to their expressivity.
-However, flexible models come with many parameters that lack physical motivation, making interpreting the implication of these models challenging.
-In this work, we demonstrate symbolic regression can complement flexible models by distilling the posterior predictive distribution of such flexible models into interpretable analytic expressions.
-We recover common GW population models such as a power-law-plus-Gaussian, and find a new empirical population model which combines accuracy and simplicity.
-This demonstrates a strategy to automatically discover interpretable population models in the ever-growing GW catalog, which can potentially be applied to other astrophysical phenomena. -->
+1. There will be more and more gravitational wave (GW) events in the coming decade.
+2. To study the GW population, people usually write down simple phenomenological models. 
+3. But that's hard to do when you data is getting more complex, so people turn to flexible models like Gaussian Mixture Model. The problem is, these models are not interpretable.
+4. Symbolic regression can help distilling interpretable models from the flexible models
+5. We apply this to gravitational wave data, but this can be appied to other problems as well!
+
 
 {% include videos.html %}
 

@@ -1,6 +1,6 @@
 # Setup
-title:               SRPop
-tagline:             'Symbolic regression for population models'
+title:               Symbolic Regression for population models
+# tagline:             'Symbolic regression for population models'
 description:         'Automated discovery of interpretable gravitational-wave population models'
 baseurl:             /SymbolicGWPopulation_paper
 paginate:            5
