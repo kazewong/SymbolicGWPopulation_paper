@@ -56,10 +56,22 @@
         <div class="video-wrapper">
             <iframe src="/SymbolicGWPopulation_paper/public/video/SRMain.mp4" allowfullscreen></iframe>
         </div>
+        Symbolic regression (SR) is a machine learning technique which searches to space of analytic expressions to fit a dataset.
+        An equation can be treated as a tree of operators (e.g. addition, sine), constants and variables.
+        Then we can randomly mutate the tree to obtain different experessions and keep the ones that fit the data well.
+        This is often done with a genetic algorithm, which allow cross-breeding and improve the search efficiency.
 
         <h2>Interpreting flexible models</h2>
         <div class="video-wrapper">
             <iframe src="/SymbolicGWPopulation_paper/public/video/FittingGWwithSR.mp4" allowfullscreen></iframe>
         </div>
+        In this work, we use symbolic regression to distill more interpertable expressions from a Gaussian mixture model fitted to the GW primary mass distribution.
+        As we increase the complexity of the equation (i.e. number of nodes in the tree.), the fitting accuracy will improve with the cost of interpretibility.
+        We show three eqautions with increasing complexity in the animation.
+        The first equation fits for the excess of event around 10 solar mass with a Gaussian and the rest of the mass distribution with an expoential function.
+        This desrcibe the bulk of the distribution, but unfortunate cannot accomdate the excess of events around 30 solar mass.
+        Once we allow for higher complexity, SR add another Gaussian around 30 solar mass, which is what the state-of-the-art phenomenological model suggests.
+        If we allow for even higher complexity, SR tries to taper the expoential function to fit the tail of the distribution.
+
     </div>
 </body>
