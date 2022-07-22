@@ -16,19 +16,32 @@ comments: true
 4. Symbolic regression can help distilling interpretable models from the flexible models
 5. We apply this to gravitational wave data, but this can be appied to other problems as well!
 
-## Main poster (~3 minutes read)
+## Main poster (~2 minutes read)
 
 {% include videos.html %}
 
 ## Take home messages
 
-
+Flexible models are very popular in data analysis due to their capability to fit complex dataset.
+However, 
 
 ## A couple more things
 
 ### Showyourwork
 
+<a href="https://github.com/showyourwork/showyourwork">
+<img src="https://raw.githubusercontent.com/showyourwork/.github/main/images/showyourwork.png" alt="showyourwork"/>
+</a>
+
+Our paper is prepared using the package [showyourwork](https://github.com/showyourwork/showyourwork), which is a workflow management tool for **reproducible**, **extensible**, **transparent**, and **just downright awesome** open source scientific articles (in their own wording). You can find the source code of our latex file, data file and script which generate the figures in this [github repository](https://github.com/kazewong/SymbolicGWPopulation_paper). We welcome comments in the form of github issue. If you think reproducibility and openness are important to scientific publication, give showyourwork a try!
+
 ### Manim animation
+
+<a href="https://github.com/ManimCommunity/manim">
+<img src="https://raw.githubusercontent.com/ManimCommunity/manim/main/logo/cropped.png">
+</a>
+
+The animation in this poster is made using an animation engine for explanatory math videos in python, which is originally developed by Grant Sanderson for his YouTube channel [3Blue1Brown](https://www.youtube.com/c/3blue1brown), then subsequently being developed by the manim community. We use the [community version](https://github.com/ManimCommunity/manim) for the videos in this poster. If you are interested in start making explanatory video in this style, checkout the engine! Also, the source code for creating the animations in this poster can be found in [this repo](https://github.com/kazewong/ManimAnimation/tree/master/SRexplain).
 
 ### The authors
 
