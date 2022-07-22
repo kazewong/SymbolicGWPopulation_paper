@@ -50,6 +50,12 @@ The animation in this poster is made using an animation engine for explanatory m
 
 ### The authors
 
+
+<img src="{{site.baseurl}}/public/image/Kaze.jpg"/> 
+
+<img src="{{site.baseurl}}/public/image/Miles.jpeg"/> 
+
+
 {% if page.comments %}
 <div id="disqus_thread"></div>
 <script>
