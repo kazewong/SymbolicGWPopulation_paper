@@ -53,8 +53,16 @@ The animation in this poster is made using an animation engine for explanatory m
 
 <img src="{{site.baseurl}}/public/image/Kaze.jpg"/> 
 
+Kaze is a Flatiron research fellow at the Flatiron Institute, who works mostly on  everything related to gravitational waves (expect instrumentation.)
+He also tries to apply machine learning methods such as normalizing flow to solve modern data analysis problems in astrophysics.
+He loves making animations and he tries to make one animation for each paper he publishes.
+[Twitter](https://twitter.com/physicskaze?lang=en) [GitHub](https://github.com/kazewong) [Youtube](https://www.youtube.com/channel/UCt6jkLTx5GBkGQ57HiPaeLg)
+
 <img src="{{site.baseurl}}/public/image/Miles.jpeg"/> 
 
+Miles is a PhD candidate at the Princeton University working on the intersection between astrophysics and machine learning.
+He is the main contributor and maintainer of a population symbolic regression python package called [PySR](https://github.com/MilesCranmer/PySR).
+[Twitter](https://twitter.com/MilesCranmer) [GitHub](https://github.com/MilesCranmer)
 
 {% if page.comments %}
 <div id="disqus_thread"></div>
