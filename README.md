@@ -1,7 +1,7 @@
 <p align="center">
-<a href="https://github.com/showyourwork/showyourwork">
-<img width = "450" src="https://raw.githubusercontent.com/showyourwork/.github/main/images/showyourwork.png" alt="showyourwork"/>
-</a>
+
+![](https://kazewong.github.io/SymbolicGWPopulation_paper/public/image/Figure1.PNG)
+
 <br>
 <br>
 <a href="https://github.com/kazewong/SymbolicGWPopulation_paper/actions/workflows/build.yml">
@@ -28,3 +28,8 @@ However, flexible models come with many parameters that lack physical motivation
 In this work, we demonstrate symbolic regression can complement flexible models by distilling the posterior predictive distribution of such flexible models into interpretable analytic expressions.
 We recover common GW population models such as a power-law-plus-Gaussian, and find a new empirical population model which combines accuracy and simplicity.
 This demonstrates a strategy to automatically discover interpretable population models in the ever-growing GW catalog, which can potentially be applied to other astrophysical phenomena.
+
+
+<a href="https://github.com/showyourwork/showyourwork">
+<img width = "450" src="https://raw.githubusercontent.com/showyourwork/.github/main/images/showyourwork.png" alt="showyourwork"/>
+</a>
