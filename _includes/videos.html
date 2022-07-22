@@ -28,10 +28,9 @@
             <iframe src="/SymbolicGWPopulation_paper/public/video/GW_population.mp4" allowfullscreen></iframe>
         </div>
         In the first LIGO observational run in 2015, there were 3 gravitational wave (GW) detections in 3 months.
-        In the second obserational run from November 2016 to August 2017, there were 8 detections in 9 months.
-        Then in the third observational run that started in 2019 and lasted for a year, there were 56 evented detected.
-
-
+        In the second observational run from November 2016 to August 2017, there were 8 detections in 9 months.
+        Then in the third observational run that started in 2019 and lasted for a year, there were 56 events detected.
+        The GW catalog is growing exponentially, which opens tremendous opportunity to learn astrophysics from the population of GW
 
         <h2>Phenomenological modelling of the GW population</h2>
         <div class="video-wrapper">
@@ -40,7 +39,7 @@
         To analyze the population of GWs, the community often fit phenomenological models to the data,
         such as using a power law or power law plus a Gaussian to model the primary mass distribution.
         The problem is writing down a sensible phenomenological model depends on individual's intuition,
-        and ther are more difficult to construct when the data becomes incresingly complex.
+        and there are more difficult to construct when the data becomes increasingly complex.
 
         <h2>Flexible model</h2>
         <div class="video-wrapper">
@@ -58,20 +57,20 @@
         </div>
         Symbolic regression (SR) is a machine learning technique which searches to space of analytic expressions to fit a dataset.
         An equation can be treated as a tree of operators (e.g. addition, sine), constants and variables.
-        Then we can randomly mutate the tree to obtain different experessions and keep the ones that fit the data well.
+        Then we can randomly mutate the tree to obtain different expressions and keep the ones that fit the data well.
         This is often done with a genetic algorithm, which allow cross-breeding and improve the search efficiency.
 
         <h2>Interpreting flexible model's result</h2>
         <div class="video-wrapper">
             <iframe src="/SymbolicGWPopulation_paper/public/video/FittingGWwithSR.mp4" allowfullscreen></iframe>
         </div>
-        In this work, we use symbolic regression to distill more interpertable expressions from a Gaussian mixture model fitted to the GW primary mass distribution.
+        In this work, we use symbolic regression to distill more interpretable expressions from a Gaussian mixture model fitted to the GW primary mass distribution.
         As we increase the complexity of the equation (i.e. number of nodes in the tree.), the fitting accuracy will improve with the cost of interpretibility.
-        We show three eqautions with increasing complexity in the animation.
-        The first equation fits for the excess of event around 10 solar mass with a Gaussian and the rest of the mass distribution with an expoential function.
-        This desrcibe the bulk of the distribution, but unfortunate cannot accomdate the excess of events around 30 solar mass.
+        We show three equations with increasing complexity in the animation.
+        The first equation fits for the excess of event around 10 solar mass with a Gaussian and the rest of the mass distribution with an exponential function.
+        This describe the bulk of the distribution, but unfortunate cannot accommodate the excess of events around 30 solar mass.
         Once we allow for higher complexity, SR add another Gaussian around 30 solar mass, which is what the state-of-the-art phenomenological model suggests.
-        If we allow for even higher complexity, SR tries to taper the expoential function to fit the tail of the distribution.
+        If we allow for even higher complexity, SR tries to taper the exponential function to fit the tail of the distribution.
 
     </div>
 </body>

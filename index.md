@@ -14,7 +14,7 @@ comments: true
 2. To study the GW population, people usually write down simple phenomenological models. 
 3. But that's hard to do when you data is getting more complex, so people turn to flexible models like Gaussian Mixture Model. The problem is, these models are not interpretable.
 4. Symbolic regression can help distilling interpretable models from the flexible models
-5. We apply this to gravitational wave data, but this can be appied to other problems as well!
+5. We apply this to gravitational wave data, but this can be applied to other problems as well!
 
 ## Main poster (~2 minutes read)
 
