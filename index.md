@@ -3,7 +3,8 @@ layout: default
 title: Home
 comments: true
 ---
-## Automated discovery of interpretable gravitational-wave population models
+## Automated discovery of interpretable gravitational-wave population models <a href="https://github.com/kazewong/SymbolicGWPopulation_paper/"> <img src="https://img.shields.io/badge/github-repo-blue.svg?style=flat" alt="Read the article"/></a>
+
 **Kaze W.K Wong** (Flatiron Institute), **Miles Cranmer** (Princeton University); (*equal contribution*)
 
 <img src="{{site.baseurl}}/public/image/Figure1.PNG">
