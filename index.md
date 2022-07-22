@@ -23,7 +23,12 @@ comments: true
 ## Take home messages
 
 Flexible models are very popular in data analysis due to their capability to fit complex dataset.
-However, 
+However, they are often difficult to interpret due to their large number of parameters in some non-intuitive basis.
+SR can be a tool to distill more interpretable out of these flexible models.
+Perhaps the coolest part of this work is the result you get out of the pipeline is **a collection of models**, which means you can use these models in typical data analysis tasks such as parameter estimation or model selection (And print it in your paper).
+One can surely take the equations fitted by SR and try to make scientific conclusion with them.
+But in case the referee ask "What about this robustness check?", just plug it in a traditional data analysis pipeline, and all follows.
+After all, what's the difference between a carbon-based ConvNet who look at data and propose equations and a silicon-based one?
 
 ## A couple more things
 

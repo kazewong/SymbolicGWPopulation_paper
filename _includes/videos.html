@@ -46,10 +46,15 @@
             <iframe src="/SymbolicGWPopulation_paper/public/video/FitMassFunction.mp4" allowfullscreen ></iframe>
         </div>
         To solve the problem with phenomenological models, the community start looking into more flexible models,
-        such as Gaussian mixture models and neural network based models.
+        such as <b>Gaussian mixture models</b> and <b>neural networks</b>.
         They are great at fitting the data, however, their flexibility makes them hard to interpret.
-        In a power law model, one can understand the implication of the spectral index.
-        For a neural network, it is much more difficult to determine the meaning of a particular weight in the model.
+        In particular, they are hard to interpret due to:
+        <ol>
+        <li>Large number of parameters.</li>
+        <li>Parameters are in non-intuitive basis.</li>
+        </ol>
+        In modelling the primary mass distribution with a power law plus Gaussian model, the spectral index of the power law measures the formation efficiency of compact objects as a function of mass, where the Gaussian measures a pile-up from <a href="https://en.wikipedia.org/wiki/Pair-instability_supernova">pair-instability supernova</a>.
+        While one Gaussian could be meaningful, it becomes increasing hard to interpret in physical meaning of each individual Gaussian component when we increase the number of Gaussians.
 
         <h2>Symbolic regression primer</h2>
         <div class="video-wrapper">
