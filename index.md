@@ -13,7 +13,7 @@ comments: true
 ## TL;DR
 1. There will be more and more gravitational wave (GW) events in the coming decade.
 2. To study the GW population, people usually write down simple phenomenological models. 
-3. But that's hard to do when you data is getting more complex, so people turn to flexible models like Gaussian Mixture Model. The problem is, these models are not interpretable.
+3. But that's hard to do when your data is getting more complex, so people turn to flexible models like Gaussian Mixture Model. The problem is, these models are not interpretable.
 4. Symbolic regression can help distilling interpretable models from the flexible models
 5. We apply this to gravitational wave data, but this can be applied to other problems as well!
 
